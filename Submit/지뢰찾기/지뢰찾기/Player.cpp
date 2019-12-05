@@ -33,7 +33,7 @@ void Player::CursorMove(char ch, int width, int height)
 			m_iCursorPosition_X--;
 		break;
 	case KEY_RIGHT:
-		if (m_iCursorPosition_X + 1 < width)
+		if (m_iCursorPosition_X + 1 < width-1)
 			m_iCursorPosition_X++;
 		break;
 	case KEY_UP:

@@ -9,8 +9,23 @@ Minesweeper::Minesweeper()
 	m_iHeight = HEIGHT_DEFUALT;
 }
 
-
 void Minesweeper::AreaCheck(int x, int y)
+{
+	if (MineManager::GetInstace()->MineCheck(x, y) != NULL)
+	{
+		m_MapDraw.MineDraw(x,y);
+		m_bGameState = false;
+		return;
+	}
+	else
+	{
+		m_MapDraw.BlockDraw(x, y);
+		//주변의마인을탐색
+	}
+
+}
+
+void Minesweeper::EraseBackUp(int x, int y)
 {
 	for (auto iter = AreaList.begin(); iter != AreaList.end(); iter++)
 	{
@@ -38,13 +53,14 @@ void Minesweeper::input()
 	case KEY_RIGHT:
 	case KEY_UP:
 	case KEY_DOWN:
-		AreaCheck(m_Player.CursorPosition_X_Output(), m_Player.CursorPosition_Y_Output());
+		EraseBackUp(m_Player.CursorPosition_X_Output(), m_Player.CursorPosition_Y_Output());
 		m_Player.CursorMove(ch, m_iWidth, m_iHeight);
 		break;
 	case KEY_ESC:
 		m_bGameState = false;
 		return;
 	case KEY_SPACEBAR:
+		AreaCheck(m_Player.CursorPosition_X_Output(), m_Player.CursorPosition_Y_Output());
 		break;
 	}
 	//Update();

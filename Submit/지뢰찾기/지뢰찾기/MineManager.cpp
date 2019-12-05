@@ -45,7 +45,7 @@ void MineManager::SetHint() // 주변에 있는 지뢰 갯수 등록
 			{
 				if (y == Mine_Y_Pos_Tmp && x == Mine_X_Pos_Tmp)
 					continue;
-				if(MineCheck(x, y) != NULL);
+				if(MineCheck(x, y) != NULL)
 					Hint++;
 			}		
 		}

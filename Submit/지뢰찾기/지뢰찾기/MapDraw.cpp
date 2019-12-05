@@ -4,6 +4,14 @@ MapDraw::MapDraw()
 {
 }
 
+void MapDraw::MineDraw(int x, int y)
+{
+	gotoxy(x * 2, y);
+	cout << "¡Ø";
+	return;
+
+}
+
 void MapDraw::BlockDraw(int x, int y)
 {
 	gotoxy(x * 2, y);

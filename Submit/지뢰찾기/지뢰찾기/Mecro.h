@@ -19,5 +19,5 @@ enum KEY
 	KEY_UP = 'w',
 	KEY_DOWN = 's',
 	KEY_ESC = 27,
-	KEY_SPACEBAR = 13,
+	KEY_SPACEBAR = 32
 };

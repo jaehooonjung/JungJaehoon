@@ -26,6 +26,7 @@ public:
 	void AreaSet();
 	void input();
 	void Update();
+	void EraseBackUp(int x, int y);
 	void AreaCheck(int x, int y);
 	Minesweeper();
 	~Minesweeper();
