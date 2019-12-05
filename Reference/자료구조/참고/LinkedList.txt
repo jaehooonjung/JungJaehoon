@@ -1,0 +1,132 @@
+#include<iostream>
+using namespace std;
+
+struct Node
+{
+	int data;
+	Node* Next;
+};
+
+void Show_Node(Node** Head)
+{
+	while (*Head != NULL)
+	{
+		cout << (*Head)->data << ", ";
+		Head = &(*Head)->Next;
+	}
+	cout << "\b\b " << endl << endl;
+}
+
+void insert(Node** Head,int data)
+{
+	if (*Head == NULL)
+	{
+		*Head = new Node;
+		(*Head)->data = data;
+		(*Head)->Next = NULL;
+		return;
+	}
+	else
+		insert(&(*Head)->Next, data);
+}
+
+void Delete(Node** Head, int data)
+{
+	Node* Tmp;
+	while (*Head != NULL)
+	{
+		if ((*Head)->data == data)
+		{
+			Tmp = *Head;
+			*Head = (*Head)->Next;
+			delete Tmp;
+			return;
+		}
+		Head = &(*Head)->Next;
+	}
+	cout << "해당 데이터가 없습니다." << endl;
+}
+
+Node** Search(Node** Head, int index)
+{
+	while (*Head != NULL)
+	{
+		if ((*Head)->data == index)
+			return Head;
+		Head = &(*Head)->Next;
+	}
+	return Head;
+}
+
+void add(Node** Head, int index, int data)
+{
+	Node* Tmp;
+	Head = Search(Head, index);
+	if (*Head != NULL)
+	{
+		Tmp = (*Head)->Next;
+		(*Head)->Next = new Node;
+		(*Head)->Next->data = data;
+		(*Head)->Next->Next = Tmp;
+		return;
+	}
+	cout << " 해당 데이터가 없습니다." << endl;
+}
+
+void SearchData(Node** Head, int index)
+{
+	Head = Search(Head, index);
+	if (*Head != NULL)
+		cout << *Head << " : " << index << endl << endl;
+	else
+		cout << index << "데이터가 없습니다." << endl << endl;
+}
+
+void Modify(Node** Head, int index, int data)
+{
+	Head = Search(Head, index);
+	if (*Head != NULL)
+		(*Head)->data = data;
+	else
+		cout << index << "데이터가 없습니다." << endl;
+}
+
+void Release(Node* Head)
+{
+	if (Head == NULL)
+		return;
+	Release(Head->Next);
+	delete Head;
+}
+
+void main()
+{
+	Node* Head = NULL;
+	insert(&Head, 10);
+	Show_Node(&Head);
+
+	insert(&Head, 20);
+	Show_Node(&Head);
+
+	insert(&Head, 30);
+	Show_Node(&Head);
+
+	Delete(&Head, 20);
+	Show_Node(&Head);
+
+	Delete(&Head, 10);
+	Show_Node(&Head);
+
+	add(&Head, 30, 10);
+	Show_Node(&Head);
+
+	add(&Head, 30, 20);
+	Show_Node(&Head);
+
+	SearchData(&Head, 20);
+
+	Modify(&Head, 20, 40);
+	Show_Node(&Head);
+
+	Release(Head);
+}

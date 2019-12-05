@@ -1,0 +1,8 @@
+﻿  Data.cpp
+  DataTable.cpp
+  Observer.cpp
+  Subject.cpp
+  소스.cpp
+c:\정재훈\자료구조_옵저버패턴_뉴스관리\자료구조_옵저버패턴_뉴스관리\소스.cpp(4): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  코드를 생성하고 있습니다...
+  자료구조_옵저버패턴_뉴스관리.vcxproj -> C:\정재훈\자료구조_옵저버패턴_뉴스관리\x64\Debug\자료구조_옵저버패턴_뉴스관리.exe

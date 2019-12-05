@@ -1,0 +1,361 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+#include<Windows.h>
+
+enum DIRECTION_FLAG
+{
+	DIRECTION_FLAG_MID,
+	DIRECTION_FLAG_LEFT,
+	DIRECTION_FLAG_RIGHT
+	
+};
+
+using namespace std;
+
+struct Tree
+{
+	int data;
+	Tree*Left;
+	Tree*Right;
+};
+
+void MenuDraw()
+{
+	cout << "1. data 추가" << endl;
+	cout << "2. data 삭제" << endl;
+	cout << "3. preorder" << endl;
+	cout << "4. inorder" << endl;
+	cout << "5. postorder" << endl;
+	cout << "6. data 검색" << endl;
+	cout << "7. 종료" << endl;
+	cout << ">>>>>> ";
+}
+
+
+void Insert(Tree**Node, int data)
+{
+	if (*Node == NULL)
+	{
+		*Node = new Tree;
+		(*Node)->data = data;
+		(*Node)->Left = NULL;
+		(*Node)->Right = NULL;
+		return;
+	}
+	else
+	{
+		if ((*Node)->data == data)
+		{
+			cout << "중복된 데이터가 있습니다.";
+			return;
+		}
+		else if ((*Node)->data > data)
+		{
+			Insert(&(*Node)->Left, data);
+		}
+		else if ((*Node)->data < data)
+		{
+			Insert(&(*Node)->Right, data);
+		}
+	}
+}
+
+bool NodeNullCheck(Tree*Node)
+{
+	if (Node == NULL)
+	{
+		cout << endl << "데이터가 없습니다.";
+		return false;
+	}
+	else true;
+}
+
+void preorder(Tree**Node)
+{
+	if (NodeNullCheck(*Node) == false)
+		return;
+
+	cout << (*Node)->data << "\t";
+	if ((*Node)->Left != NULL)
+		preorder(&(*Node)->Left);
+	if ((*Node)->Right != NULL)
+		preorder(&(*Node)->Right);
+
+}
+
+void inorder(Tree**Node)
+{
+	if (NodeNullCheck(*Node) == false)
+		return;
+
+	if ((*Node)->Left != NULL)
+		inorder(&(*Node)->Left);
+
+	cout << (*Node)->data << "\t";
+
+	if ((*Node)->Right != NULL)
+		inorder(&(*Node)->Right);
+}
+
+void postorder(Tree**Node)
+{
+	if (NodeNullCheck(*Node) == false)
+		return;
+	if ((*Node)->Left != NULL)
+		postorder(&(*Node)->Left);
+	if ((*Node)->Right != NULL)
+		postorder(&(*Node)->Right);
+	cout << (*Node)->data << "\t";
+}
+
+Tree*serach(Tree**Node, int data)
+{
+	static Tree * Tmp;
+	Tmp = NULL;
+
+	if (NodeNullCheck(*Node) == false)
+		return false;
+
+	if ((*Node)->data > data)
+	{
+		if ((*Node)->Left != NULL)
+			serach(&(*Node)->Left, data);
+	}
+
+	if ((*Node)->data == data)
+	{
+		Tmp = (*Node);
+		return Tmp;
+	}
+
+	if ((*Node)->data < data)
+	{
+		if ((*Node)->Right != NULL)
+			serach(&(*Node)->Right, data);
+	}
+
+	return Tmp;
+}
+
+Tree*FindPreTmp(Tree**Node, int data)
+{
+	Tree*Tmp = *Node;
+	if (data == Tmp->data)
+		return NULL;
+
+	if (data < Tmp->data)
+	{
+		if (data == Tmp->Left->data)
+			return Tmp;
+		else
+			Tmp=FindPreTmp(&Tmp->Left, data);
+	}
+	else if (data > Tmp->data)
+	{
+		if (data == Tmp->Right->data)
+			return Tmp;
+		else
+			Tmp = FindPreTmp(&Tmp->Right, data);
+	}
+}
+
+void DirectionCheck(Tree*Node, int data, DIRECTION_FLAG &Flag)
+{
+	if (data == Node->data)
+		return;
+
+	if (data < Node->data)
+	{
+		Flag = DIRECTION_FLAG_LEFT;
+		DirectionCheck(Node->Left, data, Flag);
+	}
+	else if (data > Node->data)
+	{
+		Flag = DIRECTION_FLAG_RIGHT;
+		DirectionCheck(Node->Right, data, Flag);
+	}
+}
+
+Tree *FindMinNode(Tree**MinPreNode)
+{
+	Tree*MinNode;
+	if ((*MinPreNode)->Left == NULL)
+	{
+		MinNode = (*MinPreNode)->Left;
+		return MinNode;
+	}
+		
+	if ((*MinPreNode)->Left->Left == NULL)
+	{
+		Tree*MinNode = (*MinPreNode)->Left;
+		return MinNode;
+	}
+	else
+		FindMinNode(&(*MinPreNode)->Left);
+
+}
+
+void Delete(Tree**Node, int data)
+{
+	if (NodeNullCheck(*Node) == false)
+		return;
+	DIRECTION_FLAG LeftRightFlag = DIRECTION_FLAG_MID;
+	Tree*pretmp = *Node;
+	Tree*Deletetmp = serach(&(*Node), data);
+	if (Deletetmp == NULL)
+	{
+		cout << "삭제하려는 데이터가 존제하지 않습니다.";
+		return;
+	}
+
+	DirectionCheck(*Node, data, LeftRightFlag);
+	pretmp = FindPreTmp(&(*Node), data);
+	if(LeftRightFlag == DIRECTION_FLAG_MID)
+		pretmp = NULL;
+
+
+	if (Deletetmp->Left != NULL && Deletetmp->Right == NULL)
+	{
+		if (LeftRightFlag == DIRECTION_FLAG_LEFT)
+			pretmp->Left = Deletetmp->Left;
+		else if (LeftRightFlag == DIRECTION_FLAG_RIGHT)
+			pretmp->Right = Deletetmp->Left;
+		delete Deletetmp;
+		Deletetmp = NULL;
+	}
+	else if (Deletetmp->Left == NULL && Deletetmp->Right != NULL)
+	{
+		if (LeftRightFlag == DIRECTION_FLAG_LEFT)
+			pretmp->Left = Deletetmp->Right;
+		else if (LeftRightFlag == DIRECTION_FLAG_RIGHT)
+			pretmp->Right = Deletetmp->Right;
+		delete Deletetmp;
+		Deletetmp = NULL;
+	}
+	else if (Deletetmp->Left != NULL && Deletetmp->Right != NULL)
+	{
+		Tree*MinPreTmp = Deletetmp->Right;
+		Tree*MinTmp;
+
+		if (MinPreTmp->Left == NULL)
+		{
+			MinPreTmp->Left = Deletetmp->Left;
+			pretmp->Left = MinPreTmp;
+			delete Deletetmp;
+			return;
+		}
+		else
+		{
+			MinTmp = FindMinNode(&MinPreTmp);
+			//재귀함수추가
+		}
+
+		MinPreTmp->Left = MinTmp->Right;
+		MinTmp->Right = NULL;
+
+		if (LeftRightFlag == DIRECTION_FLAG_LEFT)
+		{
+			pretmp->Left = MinTmp;
+			MinTmp->Right = Deletetmp->Right;
+			MinTmp->Left = Deletetmp->Left;
+		}
+		else if (LeftRightFlag == DIRECTION_FLAG_RIGHT)
+		{
+			pretmp->Right = MinTmp;
+			MinTmp->Left = Deletetmp->Right;
+			MinTmp->Right = Deletetmp->Right;
+		}
+		delete Deletetmp;
+	}
+	else
+	{
+		if (LeftRightFlag == DIRECTION_FLAG_LEFT)
+			pretmp->Left = NULL;
+		else if (LeftRightFlag == DIRECTION_FLAG_RIGHT)
+			pretmp->Right = NULL;
+		delete Deletetmp;
+
+	}
+}
+
+
+void AllDelete(Tree*Node)
+{
+	if (NodeNullCheck(Node) == false)
+		return;
+	else
+	{
+		if (Node->Left != NULL)
+			AllDelete(Node->Left);
+		if (Node->Right != NULL)
+			AllDelete(Node->Right);
+		delete Node;
+		Node = NULL;
+	}
+}
+
+
+void main()
+{
+	//_CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF | _CRTDBG_ALLOC_MEM_DF);
+	//_crtBreakAlloc = 1720;
+
+	Tree *Node = NULL;
+	Insert(&Node, 45);
+	Insert(&Node, 62);
+	Insert(&Node, 60);
+	Insert(&Node, 80);
+	Insert(&Node, 70);
+	Insert(&Node, 75);
+	Insert(&Node, 65);
+	Insert(&Node, 68);
+	Insert(&Node, 66);
+	Insert(&Node, 67);
+	Insert(&Node, 69);
+	Insert(&Node, 63);
+
+
+	int select, data;
+	while (1)
+	{
+		system("cls");
+		MenuDraw();
+		cin >> select;
+		switch (select)
+		{
+		case 1:
+			cout << "추가할 데이터 입력 : ";
+			cin >> data;
+			Insert(&Node, data);
+			break;
+		case 2:
+			cout << "삭제할 데이터 입력 : ";
+			cin >> data;
+			Delete(&Node, data);
+			break;
+		case 3:
+			preorder(&Node);
+			break;
+		case 4:
+			inorder(&Node);
+			break;
+		case 5:
+			postorder(&Node);
+			break;
+		case 6:
+			cout << "데이터 입력 : ";
+			cin >> data;
+			if (serach(&Node, data) != NULL)
+				cout << "데이터가 있습니다.";
+			else
+				cout << "데이터가 없습니다.";
+			break;
+		case 7:
+			AllDelete(Node);
+			return;
+		}
+		system("pause");
+	}
+
+}

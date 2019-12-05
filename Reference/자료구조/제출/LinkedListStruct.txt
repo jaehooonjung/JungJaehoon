@@ -1,0 +1,199 @@
+#include<iostream>
+using namespace std;
+
+struct Head
+{
+	int Data;
+	Head*NewNode;
+};
+
+
+
+Head*Search(Head**head, int data)
+{
+	Head*headtmp = *head;
+	while (headtmp != NULL)
+	{
+		if (headtmp->Data == data)
+		{
+			return headtmp;
+		}
+		else
+		{
+			headtmp = headtmp->NewNode;
+		}
+	}
+	return NULL;
+
+}
+
+void Insert(Head**head, int data)
+{
+	if (Search(head, data) != NULL)
+	{
+		cout << "데이터 중복입니다." << endl;
+		return;
+	}
+
+	Head*tmp = new Head;
+	tmp->Data = data;
+	tmp->NewNode = NULL;
+	if (*head == NULL)
+	{
+		*head = tmp;
+	}
+	else
+	{
+		Head*headtmp = *head;
+		while ((headtmp)->NewNode != NULL)
+		{
+			headtmp = headtmp->NewNode;
+		}
+		headtmp->NewNode = tmp;
+	}
+}
+
+void Delete(Head**head, int data)
+{
+	Head*headHeadTmp = *head;
+	Head*headRearTmp;
+	Head*searchReault = Search(head, data);
+	if (searchReault == NULL)
+	{
+		cout << "삭제하려는 데이터가 없습니다." << endl;
+		return;
+	}
+	if (searchReault->NewNode == NULL)
+	{
+		headHeadTmp->NewNode = NULL;
+	}
+	else
+	{
+		headRearTmp = searchReault->NewNode;
+		if (searchReault->Data == (*head)->Data)
+		{
+			*head = headHeadTmp->NewNode;
+		}
+		else
+		{
+			while (1)
+			{
+				if ((*headHeadTmp->NewNode).Data == searchReault->Data)
+					break;
+				else
+					headHeadTmp = headHeadTmp->NewNode;
+			}
+			(*headHeadTmp).NewNode = headRearTmp;
+		}
+
+
+	}
+	delete searchReault;
+	searchReault = NULL;
+}
+
+void Modify(Head**head, int data, int modifydata)
+{
+	Head*PreveiwTmp = *head;
+	Head*searchReault = Search(head, data);
+	Head*headRearTmp = Search(head, data)->NewNode;
+
+	if ((*head)->Data == data)
+	{
+		PreveiwTmp = NULL;
+	}
+	else
+	{
+		while ((PreveiwTmp->NewNode->Data != data))
+		{
+			PreveiwTmp = PreveiwTmp->NewNode;
+		}
+	}
+
+
+	Head*NewTmp = new Head;
+	NewTmp->Data = modifydata;
+	NewTmp->NewNode = headRearTmp;
+	if (PreveiwTmp == NULL)
+		*head = NewTmp;
+	else
+		PreveiwTmp->NewNode = NewTmp;
+
+	delete searchReault;
+}
+
+void Add(Head**head, int data, int adddata)
+{
+	Head*searchReault = Search(head, data);
+	if (searchReault == NULL)
+	{
+		cout << "추가 하려는 데이터의 위치를 찾지 못했습니다" << endl;
+		return;
+	}
+
+	Head*headRearTmp = searchReault->NewNode;
+	Head*NewNode = new Head;
+	NewNode->Data = adddata;
+	NewNode->NewNode = headRearTmp;
+	searchReault->NewNode = NewNode;
+}
+
+void DeleteAll(Head**head)
+{
+	Head * Tmp = *head;
+		while (1)
+		{
+			if ((*head)->NewNode == NULL)
+			{
+				delete *head;
+				*head = NULL;
+				return;
+			}
+
+			while (1)
+			{
+				if (Tmp->NewNode->NewNode != NULL)
+					Tmp = Tmp->NewNode;
+				else
+					break;
+			}
+			delete Tmp->NewNode;
+			Tmp->NewNode = NULL;
+			Tmp = *head;
+		}
+}
+
+void main()
+{
+	Head*head = NULL;
+	Insert(&head, 1);
+	Insert(&head, 2);
+	Insert(&head, 3);
+
+	cout << Search(&head, 1)->Data << endl;
+	cout << Search(&head, 2)->Data << endl;
+	cout << Search(&head, 3)->Data << endl;
+
+	Modify(&head, 1, 4);
+	Modify(&head, 2, 5);
+	Modify(&head, 3, 7);
+
+	cout << Search(&head, 4)->Data << endl;
+	cout << Search(&head, 5)->Data << endl;
+
+	Add(&head, 5, 6);
+
+	cout << Search(&head, 6)->Data << endl;
+
+	DeleteAll(&head);
+
+		/*
+	Delete(&head, 4);
+	Delete(&head, 5);
+	Delete(&head, 6);
+	Delete(&head, 7);
+
+		*/
+
+}
+

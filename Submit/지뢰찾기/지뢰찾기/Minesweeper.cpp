@@ -4,10 +4,29 @@
 
 Minesweeper::Minesweeper()
 {
-	
 	m_MapDraw.MapSizeSet(WIDTH_DEFUALT, HEIGHT_DEFUALT);
 	m_iWidth = WIDTH_DEFUALT;
 	m_iHeight = HEIGHT_DEFUALT;
+}
+
+
+void Minesweeper::AreaCheck(int x, int y)
+{
+	for (auto iter = AreaList.begin(); iter != AreaList.end(); iter++)
+	{
+		if ((*iter).x == x && (*iter).y == y)
+		{
+			if ((*iter).m_bCheckFlag == false)
+				m_MapDraw.BlockDraw(x,y);
+			else
+			{
+				//트리거 오픈시 이거는 나중에 작업하기
+						
+			}
+			break;
+		}
+
+	}
 }
 
 void Minesweeper::input()
@@ -19,8 +38,8 @@ void Minesweeper::input()
 	case KEY_RIGHT:
 	case KEY_UP:
 	case KEY_DOWN:
+		AreaCheck(m_Player.CursorPosition_X_Output(), m_Player.CursorPosition_Y_Output());
 		m_Player.CursorMove(ch, m_iWidth, m_iHeight);
-		
 		break;
 	case KEY_ESC:
 		m_bGameState = false;
@@ -28,7 +47,7 @@ void Minesweeper::input()
 	case KEY_SPACEBAR:
 		break;
 	}
-	Update();
+	//Update();
 }
 
 void Minesweeper::Update()
@@ -37,11 +56,38 @@ void Minesweeper::Update()
 	//맵을 그리고 지뢰가 아닌걸로 판명된 지점을 지운다.
 }
 
+void Minesweeper::GameInitalize()
+{
+	MineManager::GetInstace()->MineCreate(m_iWidth, m_iHeight);
+	AreaSet();
+}
+
+void Minesweeper::AreaSet()
+{
+	for (int y = 1; y < m_iHeight; y++)
+	{
+		for (int x = 1; x < m_iWidth; x++)
+		{
+			Area Tmp;
+			Tmp.x = x, Tmp.y = y;
+			if (MineManager::GetInstace()->MineCheck(x, y) != NULL)
+				Tmp.m_bMineFlag = true;
+			else
+				Tmp.m_bMineFlag = false;
+			Tmp.m_bCheckFlag = false;
+			Tmp.m_strShape =  "■";
+			AreaList.push_back(Tmp);
+		}
+	}
+
+
+}
+
 void Minesweeper::MinesweeperGameStart()
 {
 	m_bGameState = true;
 	m_MapDraw.GameMapDraw(m_iWidth, m_iHeight);
-	MineManager::GetInstace()->MineCreate(m_iWidth, m_iHeight);
+	GameInitalize();
 	while (m_bGameState)
 	{
 		m_Player.DrawCursor();
@@ -78,4 +124,6 @@ void Minesweeper::MinesweeperMenu()
 
 Minesweeper::~Minesweeper()
 {
+	delete MineManager::GetInstace();
+
 }

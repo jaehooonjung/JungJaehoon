@@ -1,0 +1,10 @@
+﻿  MapDraw.cpp
+c:\users\surin\source\repos\톨게이트\톨게이트\mapdraw.h(29): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\surin\source\repos\톨게이트\톨게이트\mapdraw.cpp(11): warning C4018: '>': signed 또는 unsigned가 일치하지 않습니다.
+c:\users\surin\source\repos\톨게이트\톨게이트\mapdraw.cpp(49): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  d:\windows kits\10\include\10.0.17763.0\ucrt\conio.h(453): note: 'getch' 선언을 참조하십시오.
+c:\users\surin\source\repos\톨게이트\톨게이트\mapdraw.cpp(78): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\source\repos\톨게이트\톨게이트\mapdraw.cpp(79): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\source\repos\톨게이트\톨게이트\mapdraw.cpp(80): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\source\repos\톨게이트\톨게이트\mapdraw.cpp(81): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  톨게이트.vcxproj -> C:\Users\surin\source\repos\톨게이트\Debug\톨게이트.exe

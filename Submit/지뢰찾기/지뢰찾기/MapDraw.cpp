@@ -4,6 +4,13 @@ MapDraw::MapDraw()
 {
 }
 
+void MapDraw::BlockDraw(int x, int y)
+{
+	gotoxy(x * 2, y);
+	cout << "бс";
+	return;
+}
+
 void MapDraw::DrawMidText(string str, int x, int y)
 {
 	if (x > str.size() / 2)

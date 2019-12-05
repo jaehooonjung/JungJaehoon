@@ -18,15 +18,14 @@ void Player::DrawCursor()
 {
 	m_MapDraw.DrawPoint(m_iCursorShape , m_iCursorPosition_X, m_iCursorPosition_Y);
 }
-
+/*
 void Player::EraseCursor()
 {
 	m_MapDraw.ErasePoint(m_iCursorPosition_X, m_iCursorPosition_Y);
 }
-
+*/
 void Player::CursorMove(char ch, int width, int height)
 {
-	EraseCursor();
 	switch (ch)
 	{
 	case KEY_LEFT:

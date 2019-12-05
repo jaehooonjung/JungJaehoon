@@ -15,7 +15,9 @@ public:
 		return m_hThis;
 	}
 	void MineCreate(int width, int height);
-	bool MineOverLapCheck(int x, int y);
+	Mine*MineCheck(int x, int y);
+	void SetHint();
+	void DeleteMineAll();
 	MineManager();
 	~MineManager();
 };
