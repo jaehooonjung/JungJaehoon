@@ -2,20 +2,12 @@
 #include"Mecro.h"
 class MapDraw
 {
-private:
-	int m_iWidth;
-	int m_iHeight;
-	static MapDraw* m_hThis;
 public:
-	static MapDraw*GetInstance()
-	{
-		if (m_hThis == NULL)
-			m_hThis = new MapDraw;
-		return m_hThis;
-	}
 	void MapSizeSet(int width, int height);
-	void GameMapDraw();
-
+	void GameMapDraw(int width, int height);
+	void DrawMidText(string str,int x, int y);
+	void DrawPoint(string str, int x, int y);
+	void ErasePoint(int x, int y);
 	MapDraw();
 	inline void gotoxy(int x, int y)
 	{
