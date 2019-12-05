@@ -66,12 +66,6 @@ void Minesweeper::input()
 	//Update();
 }
 
-void Minesweeper::Update()
-{
-	m_MapDraw.GameMapDraw(m_iWidth, m_iHeight);
-	//맵을 그리고 지뢰가 아닌걸로 판명된 지점을 지운다.
-}
-
 void Minesweeper::GameInitalize()
 {
 	MineManager::GetInstace()->MineCreate(m_iWidth, m_iHeight);
