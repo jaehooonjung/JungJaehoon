@@ -17,7 +17,6 @@ string AreaManager::AreaShapeOutput(int x, int y)
 
 		}
 	}
-
 }
 
 void AreaManager::AreaSet(int width, int height)
@@ -39,15 +38,27 @@ void AreaManager::AreaSet(int width, int height)
 	}
 }
 
-string AreaManager::AreaCheck(int x, int y)
+void AreaManager::AreaCheck(int x, int y)
 {
 	for (auto iter = AreaList.begin(); iter != AreaList.end(); iter++)
 	{
 		if ((*iter)->X_Pos_Output() == x && (*iter)->Y_Pos_Output() == y)
 		{
 			(*iter)->CheckFlagChange();
-			(*iter)->HintSet(MineManager::GetInstace()->FindSurroindingMine(x, y));
-			return (*iter)->ShapeOutput();
+			int MineNumTmp = MineManager::GetInstace()->FindSurroindingMine(x, y);
+			(*iter)->HintSet(MineNumTmp);
+			m_MapDraw.DrawPoint((*iter)->ShapeOutput(), x, y);
+			if (MineNumTmp == 0)
+			{
+				for (int i = (y - 1); i <= (y + 1); i++)
+				{
+					for (int j = (x - 1); j <= (x + 1); j++)
+					{
+						AreaCheck(i, j);
+					}
+				}
+			}
+			return;
 		}
 	}
 }

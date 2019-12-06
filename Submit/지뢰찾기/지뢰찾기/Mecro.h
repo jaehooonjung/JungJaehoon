@@ -9,9 +9,9 @@
 #include<vector>
 using namespace std;
 
-#define WIDTH_DEFUALT  10
-#define HEIGHT_DEFUALT 10
-#define MINE_CREATE_RATE 0.2f
+#define WIDTH_DEFUALT  15
+#define HEIGHT_DEFUALT 20
+#define MINE_CREATE_RATE 0.1f
 enum KEY
 {
 	KEY_LEFT = 'a',
