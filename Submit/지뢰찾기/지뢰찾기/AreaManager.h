@@ -16,7 +16,7 @@ public:
 	void AreaSet(int width, int height);
 	string AreaShapeOutput(int x, int y);
 	string AreaCheck(int x, int y);
-	//void SetHint();
+	void DeleteAreaAll();
 	AreaManager();
 	~AreaManager();
 };

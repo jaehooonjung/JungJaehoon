@@ -11,7 +11,8 @@ private:
 public:
 	void AreaSet(int x, int y, bool MineFlag);
 	void ShapeChage(string shape);
-	//void HintSet(int Hint);
+	void CheckFlagChange();
+	void HintSet(int Hint);
 	Area();
 	inline bool CheckFlagOutput()
 	{

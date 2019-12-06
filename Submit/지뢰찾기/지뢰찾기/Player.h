@@ -13,7 +13,6 @@ private:
 public:
 	void PlayerInitialize(string cursorshape,int width, int height);
 	void DrawCursor();
-	//void EraseCursor();
 	void CursorMove(char ch, int width, int height);
 	Player();
 	inline int CursorPosition_X_Output()

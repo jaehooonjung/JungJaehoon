@@ -14,6 +14,7 @@ public:
 	void MinesweeperMenu();
 	void MinesweeperGameStart();
 	void GameInitalize();
+	void GameEnd();
 	void input();
 	void EraseBackUp(int x, int y);
 	Minesweeper();
