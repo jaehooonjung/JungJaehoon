@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Area.cpp" />
+    <ClCompile Include="AreaManager.cpp" />
     <ClCompile Include="MapDraw.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="MineManager.cpp" />
@@ -147,6 +149,8 @@
     <ClCompile Include="소스.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Area.h" />
+    <ClInclude Include="AreaManager.h" />
     <ClInclude Include="MapDraw.h" />
     <ClInclude Include="Mecro.h" />
     <ClInclude Include="Mine.h" />

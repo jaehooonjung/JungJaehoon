@@ -16,7 +16,6 @@ public:
 	}
 	void MineCreate(int width, int height);
 	Mine*MineCheck(int x, int y);
-	void SetHint();
 	void DeleteMineAll();
 	MineManager();
 	~MineManager();
