@@ -30,6 +30,10 @@ public:
 	{
 		return m_strShape;
 	}
+	inline bool MineFlagOutput()
+	{
+		return m_bMineFlag;
+	}
 	~Area();
 };
 

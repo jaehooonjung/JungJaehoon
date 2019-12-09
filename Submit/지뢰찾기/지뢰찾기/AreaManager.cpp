@@ -63,17 +63,17 @@ void AreaManager::AreaCheck(int x, int y, int width, int height)
 
 bool AreaManager::CheckFlagCheck(int width, int height)
 {
-	int FlagCount = 0;
 	for (auto iter = AreaList.begin(); iter != AreaList.end(); iter++)
 	{
-		if ((*iter)->CheckFlagOutput() == true)
-			FlagCount++;
+		if ((*iter)->MineFlagOutput() == true)
+			continue;
+		else
+		{
+			if ((*iter)->CheckFlagOutput() == false)
+				return false;
+		}
 	}
-	if ((FlagCount + MineManager::GetInstace()->MineNumOutput()) == (width - 2)*(height - 2))
-		return true;
-	else
-		false;
-
+	return true;
 }
 
 void AreaManager::DeleteAreaAll()

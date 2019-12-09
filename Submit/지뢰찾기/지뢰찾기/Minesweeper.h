@@ -16,6 +16,7 @@ public:
 	void GameEnd();
 	void input();
 	void EraseBackUp(int x, int y);
+	void ClearCheck();
 	Minesweeper();
 	~Minesweeper();
 };

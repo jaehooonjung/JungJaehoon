@@ -38,6 +38,8 @@ void Minesweeper::input()
 		else
 		{
 			m_MapDraw.MineDraw(m_Player.CursorPosition_X_Output(), m_Player.CursorPosition_Y_Output());
+			system("cls");
+			m_MapDraw.DrawMidText("Game Over", m_iWidth, m_iHeight*0.5f);
 			getch();
 			m_bGameState = false;
 		}
@@ -59,6 +61,16 @@ void Minesweeper::GameEnd()
 	AreaManager::GetInstace()->DeleteAreaAll();
 }
 
+void Minesweeper::ClearCheck()
+{
+	if (AreaManager::GetInstace()->CheckFlagCheck(m_iWidth, m_iHeight) == true)
+	{
+		m_bGameState = false;
+		system("cls");
+		m_MapDraw.DrawMidText("Game Clear", m_iWidth, (m_iHeight*0.5f));
+	}
+}
+
 
 void Minesweeper::MinesweeperGameStart()
 {
@@ -69,6 +81,7 @@ void Minesweeper::MinesweeperGameStart()
 	{
 		m_Player.DrawCursor();
 		input();
+		ClearCheck();
 	}
 	GameEnd();
 }
