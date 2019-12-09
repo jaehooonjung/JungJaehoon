@@ -1,19 +1,9 @@
 #pragma once
 #include"Player.h"
-#include"MineManager.h"
-struct Area
-{
-	int x;
-	int y;
-	string m_strShape;
-	bool m_bMineFlag;
-	bool m_bCheckFlag;
-};
-
+#include"AreaManager.h"
 class Minesweeper
 {
 private:
-	vector<Area>AreaList;
 	int m_iWidth;
 	int m_iHeight;
 	bool m_bGameState;
@@ -23,10 +13,9 @@ public:
 	void MinesweeperMenu();
 	void MinesweeperGameStart();
 	void GameInitalize();
-	void AreaSet();
+	void GameEnd();
 	void input();
 	void EraseBackUp(int x, int y);
-	void AreaCheck(int x, int y);
 	Minesweeper();
 	~Minesweeper();
 };

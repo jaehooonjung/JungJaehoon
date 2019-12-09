@@ -4,7 +4,6 @@
 
 Player::Player()
 {
-	PlayerInitialize("¡Ù", WIDTH_DEFUALT, HEIGHT_DEFUALT);
 }
 
 void Player::PlayerInitialize(string cursorshape,int width, int height)
@@ -18,12 +17,7 @@ void Player::DrawCursor()
 {
 	m_MapDraw.DrawPoint(m_iCursorShape , m_iCursorPosition_X, m_iCursorPosition_Y);
 }
-/*
-void Player::EraseCursor()
-{
-	m_MapDraw.ErasePoint(m_iCursorPosition_X, m_iCursorPosition_Y);
-}
-*/
+
 void Player::CursorMove(char ch, int width, int height)
 {
 	switch (ch)

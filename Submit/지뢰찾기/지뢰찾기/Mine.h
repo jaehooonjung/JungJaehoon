@@ -17,7 +17,6 @@ private:
 public:
 	void MinePositionSet(int x, int y);
 	bool MineCheck(int x, int y);
-	void HintSet(int Hint);
 	Mine();
 	inline MINESTATUS MineStatusOutput()
 	{
