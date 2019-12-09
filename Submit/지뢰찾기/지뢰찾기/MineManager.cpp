@@ -12,7 +12,8 @@ void MineManager::MineCreate(int width, int height)
 	int MinePosition_X_tmp;
 	int MinePosition_Y_tmp;
 	m_iMineNumMaxium = (width*height)*MINE_CREATE_RATE;
-	for (int i = 0; i < m_iMineNumMaxium; i++)
+	MineList.reserve(m_iMineNumMaxium);
+	for (int i = 0; i < m_iMineNumMaxium; i++)//MineList.capacity() 
 	{
 		Mine*Tmp = new Mine;
 		do
@@ -26,6 +27,7 @@ void MineManager::MineCreate(int width, int height)
 
 		} while (MineCheck(MinePosition_X_tmp, MinePosition_Y_tmp) != NULL);
 		Tmp->MinePositionSet(MinePosition_X_tmp, MinePosition_Y_tmp);
+		
 		MineList.push_back(Tmp);
 	}
 }
