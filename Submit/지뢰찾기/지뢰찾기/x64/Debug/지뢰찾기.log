@@ -1,3 +1,13 @@
-﻿  MineManager.cpp
-c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\minemanager.cpp(14): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  Minesweeper.cpp
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\mapdraw.h(16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\minesweeper.cpp(49): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  d:\windows kits\10\include\10.0.17763.0\ucrt\conio.h(453): note: 'getch' 선언을 참조하십시오.
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\minesweeper.cpp(116): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\minesweeper.cpp(117): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\minesweeper.cpp(118): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\minesweeper.cpp(119): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  소스.cpp
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\mapdraw.h(16): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\지뢰찾기\지뢰찾기\소스.cpp(4): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  코드를 생성하고 있습니다...
   지뢰찾기.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\지뢰찾기\x64\Debug\지뢰찾기.exe
