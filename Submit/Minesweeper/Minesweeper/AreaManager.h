@@ -17,6 +17,7 @@ struct Area
 {
 	int m_ix;
 	int m_iy;
+	string m_strShape;
 	AREASTATE_MINE m_MineFlag;
 	AREASTATE_CHECK m_CheckFlag;
 };

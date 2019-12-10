@@ -9,34 +9,26 @@ AreaManager::AreaManager()
 void AreaManager::AreaSet()
 {
 	AreaList.reserve(WIDTH_DEFUALT*HEIGHT_DEFUALT);
-	for (size_t i = 0; i < length; i++)
+	
+	for (int y = 1; y <= HEIGHT_DEFUALT; y++)
 	{
-
-	}
-	for (int i = 0; i <= AreaList.capacity(); i++)
-	{
-		Area*Tmp = new Area;
-		Tmp->m_ix = 
-		TmpList->m_MineFlag = AREASTATE_MINE_CLEAR;
-		TmpList->m_CheckFlag = AREASTATE_CHECK_NO;
-		AreaList.push_back(TmpList);
-	}
-
-
-	for (int y = 1; y < (height - 1); y++)
-	{
-		for (int x = 1; x < (width - 1); x++)
+		for (int x = 1; x <= WIDTH_DEFUALT; x++)
 		{
 			Area*Tmp = new Area;
-			bool MineFlag;
-			if (MineManager::GetInstace()->MineCheck(x, y) == NULL)
-				MineFlag = false;
-			else
-				MineFlag = true;
-			Tmp->AreaSet(x, y, MineFlag);
-			Tmp->ShapeChage("бс");
+			Tmp->m_ix = x;
+			Tmp->m_iy = y;
+			Tmp->m_strShape = "бс";
+			Tmp->m_MineFlag = AREASTATE_MINE_CLEAR;
+			Tmp->m_CheckFlag = AREASTATE_CHECK_NO;
+			AreaList.push_back(Tmp);
 		}
 	}
+
+	for (int i = 0; i <= AreaList.capacity()*MINE_CREATE_RATE; i++)
+	{
+
+	}
+
 }
 
 string AreaShapeOutput(int x, int y);
