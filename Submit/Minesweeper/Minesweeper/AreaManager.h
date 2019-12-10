@@ -13,6 +13,11 @@ enum AREASTATE_CHECK
 	AREASTATE_CHECK_YES
 };
 
+emum AREASTATE_BOCLK
+{
+
+}
+
 struct Area
 {
 	int m_ix;
