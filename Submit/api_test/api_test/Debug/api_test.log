@@ -1,0 +1,5 @@
+﻿  소스.cpp
+c:\정재훈\jungjaehoon\jungjaehoon\submit\api_test\api_test\소스.cpp(51): error C2059: 구문 오류: ')'
+c:\정재훈\jungjaehoon\jungjaehoon\submit\api_test\api_test\소스.cpp(52): error C2143: 구문 오류: ')'이(가) ';' 앞에 없습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\api_test\api_test\소스.cpp(64): error C2059: 구문 오류: '}'
+c:\정재훈\jungjaehoon\jungjaehoon\submit\api_test\api_test\소스.cpp(64): error C2143: 구문 오류: ';'이(가) '}' 앞에 없습니다.

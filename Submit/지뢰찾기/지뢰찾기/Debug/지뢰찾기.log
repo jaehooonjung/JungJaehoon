@@ -1,5 +1,0 @@
-﻿  MapDraw.cpp
-c:\정재훈\jungjaehoon\지뢰찾기\지뢰찾기\mapdraw.h(22): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-c:\정재훈\jungjaehoon\지뢰찾기\지뢰찾기\mapdraw.cpp(16): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1774): note: 'sprintf' 선언을 참조하십시오.
-  지뢰찾기.vcxproj -> C:\정재훈\jungjaehoon\지뢰찾기\Debug\지뢰찾기.exe
