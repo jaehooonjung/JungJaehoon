@@ -35,21 +35,26 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPervlnstance, LPSTR lpszCmd
 
 int x;
 int y;
-RECT rect = { 100, 100 , 300 , 400 };
+int realX = NULL;
+int realY = NULL;
+RECT rect = { 100, 100 , 500 , 500 };
 bool ShapeFlag = false;
-
-
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	HDC hdc;
 	PAINTSTRUCT ps;
-
+	
 
 	switch (iMessage)
 	{
 	case WM_MOUSEMOVE:
 		x = LOWORD(lParam);
 		y = HIWORD(lParam);
+
+		if (rect.left < x && rect.right> x )
+			realX = x;
+		if (rect.top < y  && rect.bottom > y )
+			realY = y;
 		InvalidateRect(hWnd, &rect, TRUE);
 		return 0;
 	case WM_LBUTTONDOWN:
@@ -64,10 +69,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		if(ShapeFlag == false)
-		Ellipse(hdc, x-50, y-50, x + 50, y + 50);
+		if (ShapeFlag == false)
+		{
+			if(realX != NULL && realY != NULL)
+			Ellipse(hdc, realX - 50, realY-50, realX + 50, realY+50 );
+		}
 		else
-		Rectangle(hdc, x - 50, y - 50, x + 50, y + 50);		
+		{
+			if (realX != NULL && realY != NULL)
+			Rectangle(hdc, realX - 50, realY - 50, realX + 50, realY + 50);
+		}
 		EndPaint(hWnd, &ps);
 		return 0;
 	case WM_DESTROY:
