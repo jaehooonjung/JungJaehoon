@@ -33,13 +33,15 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPervlnstance, LPSTR lpszCmd
 	return (int)Message.wParam;
 }
 
+bool leftin = false;
+bool rightin = false;
+
 int x;
 int y;
-int realX = NULL;
-int realY = NULL;
-
-
+int realX = 0;
+int realY = 0;
 bool flag;
+
 RECT rect = { 200, 200 , 300 , 400 };
 bool ShapeFlag = false;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -55,13 +57,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		x = LOWORD(lParam);
 		y = HIWORD(lParam);
 
-		if ((rect.left > x || rect.right < x) && (rect.top > y || rect.bottom < y))
-		{
-			realX = x; 
-			realY = y;
-		}
-			InvalidateRect(hWnd, NULL, TRUE);
+		if (x < rect.left)
+			leftin = true;
 
+		if (x > rect.right)
+			rightin = true;
+
+		if (x <= rect.right && x > rect.right)
+			x = rect.right;
+		else if (x >= rect.left && x < rect.right)
+			x = rect.left;
+
+		InvalidateRect(hWnd, NULL, TRUE);
 
 		return 0;
 	case WM_LBUTTONDOWN:
@@ -76,10 +83,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
+		//if (flag == true)
+		//{
 			if (ShapeFlag == false)
-				Ellipse(hdc, realX - 50, realY - 50, realX + 50, realY + 50);
+				Ellipse(hdc, x - 50, y - 50, x + 50, y + 50);
 			else
-				Rectangle(hdc, realX - 50, realY - 50, realX + 50, realY + 50);
+				Rectangle(hdc, x - 50, y - 50, x + 50, y + 50);
+
+		//}
 		EndPaint(hWnd, &ps);
 		return 0;
 	case WM_DESTROY:
