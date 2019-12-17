@@ -6,10 +6,8 @@ LPCTSTR lpszClass = TEXT("Clock");
 SYSTEMTIME st;
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime);
-void ClockDraw(int degree, int length, float &i, float &j);
-float DegreeToRadian(float degree);
-
-
+void PosSet();
+float DegreeToRadian(int degree);
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPervlnstance, LPSTR lpszCmdParam, int nCmdShow)
 {
 	HWND hWnd;
@@ -40,11 +38,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPervlnstance, LPSTR lpszCmd
 	return (int)Message.wParam;
 }
 
-int x = 200;
-int y = 200;
-float second_x, second_y;
-float minute_x, minute_y;
-float hour_x, hour_y;
+int x = 100;
+int y = 100;
+float second_x, second_y, minute_x, minute_y, hour_x, hour_y;
+
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
@@ -57,11 +54,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		SetTimer(hWnd, 1, 100, TimeProc);
 		SendMessage(hWnd, WM_TIMER, 1, 0);
 		return 0;
-		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		MoveToEx(hdc, x, y, NULL);
-		LineTo(hdc, second_x, second_y);
+		LineTo(hdc,second_x, second_y);
 		MoveToEx(hdc, x, y, NULL);
 		LineTo(hdc, minute_x, minute_y);
 		MoveToEx(hdc, x, y, NULL);
@@ -78,56 +74,96 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
 void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
 {
-	GetLocalTime(&st);
-	ClockDraw(st.wSecond, 80, second_x, second_y);
-	ClockDraw(st.wMinute, 50, minute_x, minute_y);
-	ClockDraw(st.wHour, 30, hour_x, hour_y);
+	PosSet();
 	InvalidateRect(hWnd, NULL, TRUE);
 }
 
-void ClockDraw(int degree, int length, float &i, float &j)
+void PosSet()
 {
-	float a, b;
-	float Radian = DegreeToRadian((float)degree*6);
-	b = sin(Radian) * length;
-	a = cos(Radian) * length;
+	GetLocalTime(&st);
+	second_x = cos(DegreeToRadian(st.wSecond * 6)) * 100;
+	second_y = sin(DegreeToRadian(st.wSecond*6))*100;
+	minute_x = cos(DegreeToRadian(st.wMinute * 6)) * 60;
+	minute_y = sin(DegreeToRadian(st.wMinute * 6)) * 60; 
+	hour_x = cos(DegreeToRadian(st.wHour * 30)) * 20;
+	hour_y = sin(DegreeToRadian(st.wHour * 30)) * 20;
 
-	i = x + a;
-	j = y + b;
-
-
-
-	/*
-		if (degree >= 15 && degree < 30)
+	if ((st.wHour >= 0 && st.wHour < 3) || (st.wHour >= 12 && st.wHour < 15))
 	{
-		i = x - a;
-		j = y + b;
-	}
-	else if (degree >= 30 && degree < 45)
-	{
-		i = x - a;
-		j = y - b;
 
 	}
-	else if (degree >= 45 && degree <  60)
+	else if ((st.wHour >= 3 && st.wHour < 6) || (st.wHour > 15 && st.wHour < 18))
 	{
-		i = x + a;
-		j = y - b;
+		
 	}
-	else
+	else if ((st.wHour >= 9 && st.wHour < 12) || (st.wHour > 18 && st.wHour < 21))
 	{
-		i = x + a;
-		j = y + b;
-
+		hour_y = -hour_y;
 	}
 
-	*/
+	if ((st.wMinute >= 0 && st.wMinute < 3) || (st.wMinute >= 12 && st.wMinute < 15))
+	{
 
+	}
+	else if ((st.wMinute >= 3 && st.wHour < 6) || (st.wMinute > 15 && st.wMinute < 18))
+	{
+
+	}
+	else if ((st.wMinute >= 9 && st.wMinute < 12) || (st.wMinute > 18 && st.wMinute < 21))
+	{
+		minute_y = -minute_y;
+	}
+			
+	second_x += x;
+	second_y += y;
+	minute_x += x;
+	minute_y += y;
+	hour_x += x;
+	hour_y += y;
+
+}			 
+
+float DegreeToRadian(int degree)
+{
+	return (PI * (float)degree/180);
 }
 
-
-float DegreeToRadian(float degree)
+/*if (st.wSecond >= 15 && st.wSecond < 30)
 {
-	return degree*PI/180;
-}
+	second_x += x;
+	second_y += y;
 
+}
+else if (st.wSecond >= 15 && st.wSecond < 30)
+{
+
+}
+else if (st.wSecond >= 15 && st.wSecond < 30)
+{
+
+}
+else
+{
+	second_x += x;
+	second_y += y;
+}
+if (st.wSecond >= 15 && st.wSecond < 30)
+{
+	second_x += x;
+	second_y += y;
+
+}
+else if (st.wSecond >= 15 && st.wSecond < 30)
+{
+
+}
+else if (st.wSecond >= 15 && st.wSecond < 30)
+{
+
+}
+else
+{
+	second_x += x;
+	second_y += y;
+}
+   */

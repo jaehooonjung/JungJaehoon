@@ -1,8 +1,12 @@
 ﻿  소스.cpp
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(66): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(68): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(92): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(93): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(131): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Win_api_Timer2.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\Win_api_Timer2\Debug\Win_api_Timer2.exe
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(62): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(64): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(84): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(85): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(86): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(87): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(88): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(89): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_timer2\win_api_timer2\소스.cpp(116): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Win_api_Timer2.vcxproj -> C:\정재훈\jungjaehoon\JungJaehoon\Submit\Win_api_Timer2\Debug\Win_api_Timer2.exe
