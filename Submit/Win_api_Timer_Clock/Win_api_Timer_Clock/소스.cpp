@@ -7,8 +7,7 @@ SYSTEMTIME st;
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime);
 void ClockSet();
-float DegreeToRadian(float degree);
-
+float DegreeToRadian(int degree);
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPervlnstance, LPSTR lpszCmdParam, int nCmdShow)
 {
@@ -58,11 +57,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		SetTimer(hWnd, 1, 100, TimeProc);
 		SendMessage(hWnd, WM_TIMER, 1, 0);
 		return 0;
-		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		MoveToEx(hdc, x, y, NULL);
-		LineTo(hdc, second_x, second_y);
+		LineTo(hdc,second_x, second_y);
 		MoveToEx(hdc, x, y, NULL);
 		LineTo(hdc, minute_x, minute_y);
 		MoveToEx(hdc, x, y, NULL);
@@ -102,8 +100,9 @@ void ClockSet()
 	hour_y = y + hour_r * sin(Radian - PI / 2);
 }
 
-float DegreeToRadian(float degree)
+
+float DegreeToRadian(int degree)
 {
-	return degree * PI / 180;
+	return (PI * (float)degree/180);
 }
 

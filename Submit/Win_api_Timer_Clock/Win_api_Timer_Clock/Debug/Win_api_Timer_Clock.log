@@ -1,15 +1,15 @@
 ﻿  소스.cpp
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(69): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(92): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(93): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(94): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(97): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(98): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(101): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(102): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\surin\desktop\win_api_timer_clock\win_api_timer_clock\소스.cpp(107): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Win_api_Timer_Clock.vcxproj -> C:\Users\surin\Desktop\Win_api_Timer_Clock\Debug\Win_api_Timer_Clock.exe
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(63): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(65): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(90): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(91): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(92): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(94): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(95): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(96): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(98): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(99): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(100): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_timer_clock\win_api_timer_clock\소스.cpp(106): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Win_api_Timer_Clock.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\Win_api_Timer_Clock\Debug\Win_api_Timer_Clock.exe
