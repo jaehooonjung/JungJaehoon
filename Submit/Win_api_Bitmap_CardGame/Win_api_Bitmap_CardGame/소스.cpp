@@ -36,6 +36,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 }
 
 int mouse_x, mouse_y;
+int openflag = 0;
 bool GameStatus = false;
 CardManager M_CardManager;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -51,13 +52,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONDOWN:
 		mouse_x = LOWORD(lParam);
 		mouse_y = HIWORD(lParam);
-		M_CardManager.CardOpen(mouse_x, mouse_y);
+		M_CardManager.CardOpen(mouse_x, mouse_y, openflag);
 		InvalidateRect(hWnd, NULL, TRUE);
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		M_CardManager.CardDrawAll(hdc);
 		EndPaint(hWnd, &ps);
+		M_CardManager.CardClearCheck(openflag);
 		return 0;
 	case WM_DESTROY:
 		PostQuitMessage(0);

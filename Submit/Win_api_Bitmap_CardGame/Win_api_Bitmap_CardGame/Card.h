@@ -21,6 +21,7 @@ public:
 	void CardInfoSet(int CardPosition_x, int CardPosition_y);
 	void CardDraw(HDC hdc);
 	void CardOpenFlagChange();
+	void CardClearFlagChange();
 	Card();
 	inline int CardPosition_x_Output()
 	{
@@ -45,6 +46,10 @@ public:
 	inline int BitmapNameOutput()
 	{
 		return m_iBitmapName;
+	}
+	inline bool ClearFlagOutput()
+	{
+		return m_bClearFlag;
 	}
 	~Card();
 };

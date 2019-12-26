@@ -35,7 +35,11 @@ void Card::CardOpenFlagChange()
 		m_bOpenFlag = true;
 	else
 		m_bOpenFlag = false;
+}
 
+void Card::CardClearFlagChange()
+{
+		m_bClearFlag = true;
 }
 
 Card::~Card()

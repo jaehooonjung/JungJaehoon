@@ -1,7 +1,5 @@
 #include "CardManager.h"
 
-CardManager*CardManager::m_hThis = NULL;
-
 CardManager::CardManager()
 {
 	srand((unsigned)time(NULL));
@@ -72,15 +70,57 @@ void CardManager::CardDrawAll(HDC hdc)
 	}
 }
 
-void CardManager::CardOpen(int mouse_x, int mouse_y)
+void CardManager::CardOpen(int mouse_x, int mouse_y, int &openflag)
 {
 	for (auto iter = m_CardList.begin(); iter != m_CardList.end(); iter++)
 	{
 		if (((*iter)->CardPosition_x_Output() <= mouse_x) && (((*iter)->CardPosition_x_Output() + 150) >= mouse_x) && ((*iter)->CardPosition_y_Output() <= mouse_y) && ((*iter)->CardPosition_y_Output() + 250 >= mouse_y))
 		{
-			(*iter)->CardOpenFlagChange();
-			return;
+			if ((*iter)->ClearFlagOutput() == true)
+				return;
+			else
+			{
+				(*iter)->CardOpenFlagChange();
+				openflag++;
+				return;
+			}
 		}
+	}
+
+}
+
+void CardManager::CardClearCheck(int &openflag)
+{
+	if (openflag < 2)
+		return;
+
+	Card*CompareCard1 = NULL;
+	Card*CompareCard2 = NULL;
+	for (auto iter = m_CardList.begin(); iter != m_CardList.end(); iter++)
+	{
+		if ((*iter)->ClearFlagOutput() == true)
+			continue;
+			if ((*iter)->OpenFlagOutput() == true)
+			{
+				if(CompareCard1 == NULL)
+				CompareCard1 = (*iter);
+				else
+					CompareCard2 = (*iter);
+			}
+	}
+	if (CompareCard1->BitmapNameOutput() == CompareCard2->BitmapNameOutput())
+	{
+		CompareCard1->CardClearFlagChange();
+		CompareCard2->CardClearFlagChange();
+		openflag = 0;
+		return;
+	}
+	else
+	{
+		CompareCard1->CardOpenFlagChange();
+		CompareCard2->CardOpenFlagChange();
+		openflag = 0;
+		return;
 	}
 
 }
