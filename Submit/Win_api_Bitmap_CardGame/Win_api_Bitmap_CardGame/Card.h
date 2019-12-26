@@ -1,6 +1,8 @@
 #pragma once
 #include<Windows.h>
+#include<time.h>
 #include"resource.h"
+using namespace std;
 
 class Card
 {
@@ -10,15 +12,24 @@ private:
 	HBITMAP m_pBitOld;
 	SIZE m_size;
 	int m_iBitmapName;
-	int m_iStart_x;
-	int m_iStart_y;
+	int m_iCardPosition_x;
+	int m_iCardPosition_y;
 	bool m_bOpenFlag;
 	bool m_bClearFlag;
 public:
 	void init(HDC hdc, HINSTANCE hInst, int bitmapname);
-	void CardInfoSet(int start_x, int start_y);
-	void CardDraw(HDC hdc, int x, int y ,int rate_x, int rate_y);
+	void CardInfoSet(int CardPosition_x, int CardPosition_y);
+	void CardDraw(HDC hdc);
+	void CardOpenFlagChange();
 	Card();
+	inline int CardPosition_x_Output()
+	{
+		return m_iCardPosition_x;
+	}
+	inline int CardPosition_y_Output()
+	{
+		return m_iCardPosition_y;
+	}
 	inline int SizeXOutput()
 	{
 		return m_size.cx;
@@ -30,6 +41,10 @@ public:
 	inline bool OpenFlagOutput()
 	{
 		return m_bOpenFlag;
+	}
+	inline int BitmapNameOutput()
+	{
+		return m_iBitmapName;
 	}
 	~Card();
 };

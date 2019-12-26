@@ -16,19 +16,27 @@ void Card::init(HDC hdc, HINSTANCE hInst, int bitmapname)
 	m_iBitmapName = bitmapname;
 }
 
-void Card::CardInfoSet(int start_x, int start_y)
+void Card::CardInfoSet(int CardPosition_x, int CardPosition_y)
 {
-	m_iStart_x = start_x;
-	m_iStart_y = start_y;
+	m_iCardPosition_x = CardPosition_x;
+	m_iCardPosition_y = CardPosition_y;
 	m_bOpenFlag = false;
 	m_bClearFlag = false;
 }
 
-void Card::CardDraw(HDC hdc, int x, int y, int rate_x, int rate_y)
+void Card::CardDraw(HDC hdc)
 {
-	StretchBlt(hdc, x, y, m_size.cx * rate_x, m_size.cy * rate_y, m_MemDC, 0, 0, m_size.cx, m_size.cy, SRCCOPY);
+	BitBlt(hdc, m_iCardPosition_x, m_iCardPosition_y, m_size.cx*200, m_size.cy*250 , m_MemDC, 0, 0, SRCCOPY);
 }
 
+void Card::CardOpenFlagChange()
+{
+	if (m_bOpenFlag == false)
+		m_bOpenFlag = true;
+	else
+		m_bOpenFlag = false;
+
+}
 
 Card::~Card()
 {

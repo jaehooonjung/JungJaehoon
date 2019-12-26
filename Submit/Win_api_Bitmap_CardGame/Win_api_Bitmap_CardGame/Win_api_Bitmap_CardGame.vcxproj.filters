@@ -24,9 +24,6 @@
     <ClInclude Include="CardManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CardGame.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win_api_Bitmap_CardGame.rc">
@@ -76,9 +73,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CardManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CardGame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

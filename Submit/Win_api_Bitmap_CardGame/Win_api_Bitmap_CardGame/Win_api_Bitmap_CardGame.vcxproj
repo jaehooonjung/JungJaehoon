@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
-    <ClInclude Include="CardGame.h" />
     <ClInclude Include="CardManager.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
@@ -162,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="CardGame.cpp" />
     <ClCompile Include="CardManager.cpp" />
     <ClCompile Include="소스.cpp" />
   </ItemGroup>

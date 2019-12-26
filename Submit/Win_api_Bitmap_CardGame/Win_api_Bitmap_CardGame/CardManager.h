@@ -1,32 +1,28 @@
 #pragma once
 #include "Card.h"
 #include<vector>
-using namespace std;
 #define CARDMAX 10
+#define CARDPOSITIONDEFAULT_X 50
+#define CARDPOSITIONDEFAULT_Y 10
+#define CARDPOSITIONDEFAULT_INTERVAL 150
 
 class CardManager
 {
 private:
-	//삭제
-	Card m_dog;
-	Card m_tiger;
-	Card m_duck;
-	Card m_elephant;
-	Card m_cow;
-	Card m_horse;
-	Card m_cat;
-	Card m_monkey;
-	Card m_frog;
-	Card m_chicken;
-	Card m_black;
-	// 이까지 삭제
-
-	vector<Card*>CardList;
+	static CardManager* m_hThis;
+	vector<Card*>m_CardList;
+	Card*m_CardBack;
 public:
-	void Init(HWND hWnd, HINSTANCE hInst); //삭제
-	void OutputRandomCard();
-	void CardListSet();
-	void CardDrawAll();
+	static CardManager* GetInstace()
+	{
+		if (m_hThis == NULL)
+			m_hThis = new CardManager;
+		return m_hThis;
+	}
+	bool RandomCardOveralpCheck(int bitmapname);
+	void CardListSet(HWND hWnd, HINSTANCE hInst, bool&gamestatus);
+	void CardDrawAll(HDC hdc);
+	void CardOpen(int mouse_x,int mouse_y);
 	CardManager();
 	~CardManager();
 };

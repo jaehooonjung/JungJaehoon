@@ -1,67 +1,88 @@
 #include "CardManager.h"
 
-
+CardManager*CardManager::m_hThis = NULL;
 
 CardManager::CardManager()
 {
+	srand((unsigned)time(NULL));
 }
 
-void CardManager::Init(HWND hWnd, HINSTANCE hInst) //삭제해야함
+bool CardManager::RandomCardOveralpCheck(int bitmapname)
 {
-	HDC hdc = GetDC(hWnd);
+	int flag = 0;
+	for (auto iter = m_CardList.begin(); iter != m_CardList.end(); iter++)
+	{
+		if ((*iter)->BitmapNameOutput() == bitmapname)
+			flag++;
+	}
+	if (flag == 2)
+		return false;
+	else
+		return true;
+}
 
-	m_dog.init(hdc, hInst, IDB_BITMAP1);
-	m_tiger.init(hdc, hInst, IDB_BITMAP2);
-	m_duck.init(hdc, hInst, IDB_BITMAP3);
-	m_elephant.init(hdc, hInst, IDB_BITMAP4);
-	m_cow.init(hdc, hInst, IDB_BITMAP5);
-	m_horse.init(hdc, hInst, IDB_BITMAP6);
-	m_cat.init(hdc, hInst, IDB_BITMAP7);
-	m_monkey.init(hdc, hInst, IDB_BITMAP8);
-	m_frog.init(hdc, hInst, IDB_BITMAP9);
-	m_chicken.init(hdc, hInst, IDB_BITMAP10);
-	m_black.init(hdc, hInst, IDB_BITMAP11);
+
+void CardManager::CardListSet(HWND hWnd, HINSTANCE hInst, bool&gamestatus)
+{
+	if (gamestatus == true)
+		return;
+	else
+		gamestatus = true;
+
+	HDC hdc = GetDC(hWnd);
+	int start_x_tmp = CARDPOSITIONDEFAULT_X, start_y_tmp = CARDPOSITIONDEFAULT_Y;
+	int RandomTmp;
+	for (int i = 1; i <= (CARDMAX*2); i++, start_x_tmp+= CARDPOSITIONDEFAULT_INTERVAL)
+	{
+		Card * Tmp = new Card;
+		do
+		{
+			RandomTmp = (rand() % 10) + 101;
+
+		} while (RandomCardOveralpCheck(RandomTmp) == false);
+		
+		Tmp->init(hdc, hInst, RandomTmp);
+		Tmp->CardInfoSet(start_x_tmp, start_y_tmp);
+		m_CardList.push_back(Tmp);
+		start_x_tmp += Tmp->SizeXOutput();
+		if (i == 10)
+		{
+			start_y_tmp += Tmp->SizeYOutput() + CARDPOSITIONDEFAULT_INTERVAL*2;
+			start_x_tmp = CARDPOSITIONDEFAULT_X-150;
+		}
+	}
+
+	m_CardBack = new Card;
+	m_CardBack->init(hdc, hInst, IDB_BITMAP11);
 
 	ReleaseDC(hWnd, hdc);
 }
 
-void CardManager::OutputRandomCard()
+void CardManager::CardDrawAll(HDC hdc)
 {
-	/*
-	랜덤으로 1~10 까지 숫자를 뽑고 
-	전체 백터에서 같은 숫자가 2개 이상되면 반복문을 새로 돌린다
-	아니라면 Card의 인이트 함수를 쓰낟
-	
-	
-	*/
-}
-
-
-void CardManager::CardListSet()
-{
-	int start_x_tmp = 10, start_y_tmp = 10;
-	
-	for (int i = 1; i <= (CARDMAX*2); i++)
+	for (auto iter = m_CardList.begin(); iter != m_CardList.end(); iter++)
 	{
-		Card * Tmp = new Card;
-
-
-		Tmp->CardInfoSet(start_x_tmp, start_y_tmp);
-		CardList.push_back(Tmp);
-		start_x_tmp += Tmp->SizeXOutput();
-		if (i == 10)
-			start_y_tmp += Tmp->SizeYOutput();
+	if ((*iter)->OpenFlagOutput() == false)
+		{
+			m_CardBack->CardInfoSet((*iter)->CardPosition_x_Output(), (*iter)->CardPosition_y_Output());
+			m_CardBack->CardDraw(hdc);
+		}
+		else
+			(*iter)->CardDraw(hdc);
 	}
 }
 
-void CardManager::CardDrawAll()
+void CardManager::CardOpen(int mouse_x, int mouse_y)
 {
-	for (auto iter = CardList.begin(); iter != CardList.end(); iter++)
+	for (auto iter = m_CardList.begin(); iter != m_CardList.end(); iter++)
 	{
-
-
-
+		if (((*iter)->CardPosition_x_Output() <= mouse_x) && (((*iter)->CardPosition_x_Output() + 150) >= mouse_x) && ((*iter)->CardPosition_y_Output() <= mouse_y) && ((*iter)->CardPosition_y_Output() + 250 >= mouse_y))
+		{
+			(*iter)->CardOpenFlagChange();
+			return;
+		}
 	}
+
 }
 
 CardManager::~CardManager()
