@@ -58,6 +58,9 @@ void CardManager::CardListSet(HWND hWnd, HINSTANCE hInst, bool&gamestatus)
 
 void CardManager::CardDrawAll(HDC hdc)
 {
+	if (m_CardList.size() == NULL)
+		return;
+
 	for (auto iter = m_CardList.begin(); iter != m_CardList.end(); iter++)
 	{
 	if ((*iter)->OpenFlagOutput() == false)
