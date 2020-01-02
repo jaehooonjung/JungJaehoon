@@ -21,6 +21,9 @@ private:
 public:
 	bool RandomCardOveralpCheck(int bitmapname);
 	void CardListSet(HWND hWnd, HINSTANCE hInst, GAMESTATE& gamestate);
+	void CardDrawAll(HDC hdc);
+	void CardOpen(int mouse_x, int mouse_y);
+	bool OpenCardCheck(GAMESTATE& gamestate);
 	CardManager();
 	~CardManager();
 };
