@@ -1,7 +1,0 @@
-﻿  소스.cpp
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_cardgame2\win_api_cardgame2\소스.cpp(59): warning C4101: 'MemDC' :참조되지 않은 지역 변수입니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_cardgame2\win_api_cardgame2\소스.cpp(61): warning C4101: 'OldBitMap' :참조되지 않은 지역 변수입니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_cardgame2\win_api_cardgame2\소스.cpp(61): warning C4101: 'MyBitMap' :참조되지 않은 지역 변수입니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_cardgame2\win_api_cardgame2\소스.cpp(163): warning C4101: 'SecTmp' :참조되지 않은 지역 변수입니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_cardgame2\win_api_cardgame2\소스.cpp(163): warning C4101: 'MinTmp' :참조되지 않은 지역 변수입니다.
-  Win_api_CardGame2.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\Win_api_CardGame2\Debug\Win_api_CardGame2.exe
