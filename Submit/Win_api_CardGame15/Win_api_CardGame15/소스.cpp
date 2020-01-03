@@ -1,5 +1,5 @@
 #include"CardManager.h"
-#define PENAITYTIME 3
+#define PENAITYTIME 1
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 HINSTANCE g_hInst;

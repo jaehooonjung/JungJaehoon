@@ -1,0 +1,7 @@
+﻿  소스.cpp
+c:\정재훈\jungjaehoon\jungjaehoon\submit\cardgameremaster\cardgameremaster\소스.cpp(59): warning C4101: 'MemDC' :참조되지 않은 지역 변수입니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\cardgameremaster\cardgameremaster\소스.cpp(61): warning C4101: 'OldBitMap' :참조되지 않은 지역 변수입니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\cardgameremaster\cardgameremaster\소스.cpp(61): warning C4101: 'MyBitMap' :참조되지 않은 지역 변수입니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\cardgameremaster\cardgameremaster\소스.cpp(181): warning C4101: 'SecTmp' :참조되지 않은 지역 변수입니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\cardgameremaster\cardgameremaster\소스.cpp(181): warning C4101: 'MinTmp' :참조되지 않은 지역 변수입니다.
+  CardGameRemaster.vcxproj -> C:\정재훈\jungjaehoon\JungJaehoon\Submit\CardGameRemaster\Debug\CardGameRemaster.exe
