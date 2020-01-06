@@ -1,40 +1,26 @@
-#include <windows.h>
 #pragma comment(lib, "msimg32.lib")
+#include <windows.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 HINSTANCE g_hInst;
 LPCTSTR lpszClass = TEXT("TransparentBlt");
 
 #define CHARACTER_X_POSDEFAULT 300
 #define CHARACTER_Y_POSDEFAULT 350
+#define JUMP_DISTANCE 30
+#define MOVE_DISTANCE 10
 
 void Move(int direction);
+void Jump(int direction,HWND hWnd);
+float DegreeToRadian(int degree);
 
 enum CHARACTERMOTION
 {
-	CHARACTERMOTION_BOTTOM,
-	CHARACTERMOTION_TOP,
-	CHARACTERMOTION_LEFT,
+	CHARACTERMOTION_BOTTOM = 0,
+	CHARACTERMOTION_LEFT = 2,
 	CHARACTERMOTION_RIGHT
-};
-
-
-enum CHARACTERMOTION_BOTTOM
-{
-	CHARACTERMOTION_BOTTOM_1,
-	CHARACTERMOTION_BOTTOM_2,
-	CHARACTERMOTION_BOTTOM_3,
-	CHARACTERMOTION_BOTTOM_4,
-	CHARACTERMOTION_BOTTOM_END
-};
-
-enum CHARACTERMOTION_TOP
-{
-	CHARACTERMOTION_TOP_1,
-	CHARACTERMOTION_TOP_2,
-	CHARACTERMOTION_TOP_3,
-	CHARACTERMOTION_TOP_4,
-	CHARACTERMOTION_TOP_END
-
 };
 
 enum CHARACTERMOTION_LEFT
@@ -92,7 +78,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 
 int CharacterPos_x = CHARACTER_X_POSDEFAULT;
 int CharacterPos_y = CHARACTER_Y_POSDEFAULT;
-int CharacterDirection = CHARACTERMOTION_BOTTOM, CharacterMotion = CHARACTERMOTION_BOTTOM_1;
+int CharacterDirection = CHARACTERMOTION_BOTTOM, CharacterMotion = CHARACTERMOTION_BOTTOM;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
@@ -110,23 +96,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		switch (wParam)
 		{
 		case VK_LEFT:
-			CharacterPos_x -= 10;
+			CharacterPos_x -= MOVE_DISTANCE;
 			Move(wParam);
 			break;
 		case VK_RIGHT:
-			CharacterPos_x += 10;
+			CharacterPos_x += MOVE_DISTANCE;
 			Move(wParam);
 			break;
-
-		case VK_UP:
-			CharacterPos_y -= 10;
-			Move(wParam);
-			break;
-
-		case VK_DOWN:
-			CharacterPos_y += 10;
-			Move(wParam);
-			break;
+		case VK_SPACE:
+			switch (CharacterDirection)
+			{
+			case CHARACTERMOTION_BOTTOM:
+				break;
+			case CHARACTERMOTION_LEFT:
+				Jump(CHARACTERMOTION_LEFT, hWnd);
+				break;
+			case CHARACTERMOTION_RIGHT:
+				Jump(CHARACTERMOTION_RIGHT, hWnd);
+			}
 		}
 		InvalidateRect(hWnd, NULL, TRUE);
 		return 0;
@@ -169,17 +156,39 @@ void Move(int direction)
 		if (CharacterMotion == CHARACTERMOTION_RIGHT_END)
 			CharacterMotion = CHARACTERMOTION_RIGHT_1;
 		break;
-	case VK_UP:
-		CharacterDirection = CHARACTERMOTION_TOP;
-		CharacterMotion++;
-		if (CharacterMotion == CHARACTERMOTION_TOP_END)
-			CharacterMotion = CHARACTERMOTION_TOP_1;
-		break;
-	case VK_DOWN:
-		CharacterDirection = CHARACTERMOTION_BOTTOM;
-		CharacterMotion++;
-		if (CharacterMotion == CHARACTERMOTION_BOTTOM_END)
-			CharacterMotion = CHARACTERMOTION_BOTTOM_1;
-		break;
 	}
+}
+
+void Jump(int direction, HWND hWnd)
+{
+	float Radian;
+	for (int i = 0; i < 4; i++)
+	{
+		Radian = DegreeToRadian(i*45);
+		if (CharacterDirection == CHARACTERMOTION_LEFT)
+		{
+			CharacterPos_x -= JUMP_DISTANCE * cos(Radian - M_PI / 2);
+			CharacterPos_y += JUMP_DISTANCE * sin(Radian - M_PI / 2);
+			CharacterMotion++;
+			if (CharacterMotion == CHARACTERMOTION_LEFT_END)
+				CharacterMotion = CHARACTERMOTION_LEFT_1;
+
+		}
+		if(CharacterDirection == CHARACTERMOTION_RIGHT)
+		{
+			CharacterPos_x += JUMP_DISTANCE * sin(Radian - M_PI / 2);
+			CharacterPos_y -= JUMP_DISTANCE * sin(Radian - M_PI / 2);
+			CharacterMotion++;
+			if (CharacterMotion == CHARACTERMOTION_RIGHT_END)
+				CharacterMotion = CHARACTERMOTION_RIGHT_1;
+
+		}
+		InvalidateRect(hWnd, NULL, TRUE);
+		Sleep(200);
+	}
+}
+
+float DegreeToRadian(int degree)
+{
+	return (M_PI * (float)degree / 180);
 }
