@@ -162,13 +162,13 @@ void Move(int direction)
 void Jump(int direction, HWND hWnd)
 {
 	float Radian;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i <= 270; i+=90)
 	{
-		Radian = DegreeToRadian(i*45);
+		Radian = DegreeToRadian(i);
 		if (CharacterDirection == CHARACTERMOTION_LEFT)
 		{
-			CharacterPos_x -= JUMP_DISTANCE * cos(Radian - M_PI / 2);
-			CharacterPos_y += JUMP_DISTANCE * sin(Radian - M_PI / 2);
+			CharacterPos_x -= (JUMP_DISTANCE / 4);
+			CharacterPos_y -= JUMP_DISTANCE * sin(Radian);
 			CharacterMotion++;
 			if (CharacterMotion == CHARACTERMOTION_LEFT_END)
 				CharacterMotion = CHARACTERMOTION_LEFT_1;
@@ -176,7 +176,7 @@ void Jump(int direction, HWND hWnd)
 		}
 		if(CharacterDirection == CHARACTERMOTION_RIGHT)
 		{
-			CharacterPos_x += JUMP_DISTANCE * sin(Radian - M_PI / 2);
+			CharacterPos_x -= (JUMP_DISTANCE / 4);
 			CharacterPos_y -= JUMP_DISTANCE * sin(Radian - M_PI / 2);
 			CharacterMotion++;
 			if (CharacterMotion == CHARACTERMOTION_RIGHT_END)
