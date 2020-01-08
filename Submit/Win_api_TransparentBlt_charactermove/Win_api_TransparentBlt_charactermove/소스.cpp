@@ -9,7 +9,7 @@ LPCTSTR lpszClass = TEXT("TransparentBlt");
 
 #define CHARACTER_X_POSDEFAULT 300
 #define CHARACTER_Y_POSDEFAULT 350
-#define JUMP_DISTANCE 30
+#define JUMP_DISTANCE 1
 #define MOVE_DISTANCE 10
 
 void Move(int direction);
@@ -162,29 +162,42 @@ void Move(int direction)
 void Jump(int direction, HWND hWnd)
 {
 	float Radian;
+<<<<<<< HEAD
 	for (int i = 0; i <= 270; i+=90)
+=======
+	for (int i = 0; i <= 180; i++)
+>>>>>>> e809c88bef0b764c6615d91478e57142c97bfe0a
 	{
 		Radian = DegreeToRadian(i);
 		if (CharacterDirection == CHARACTERMOTION_LEFT)
 		{
+<<<<<<< HEAD
 			CharacterPos_x -= (JUMP_DISTANCE / 4);
 			CharacterPos_y -= JUMP_DISTANCE * sin(Radian);
+=======
+			CharacterPos_x -= JUMP_DISTANCE * cos(Radian - M_PI);
+			CharacterPos_y += JUMP_DISTANCE * sin(Radian - M_PI);
+>>>>>>> e809c88bef0b764c6615d91478e57142c97bfe0a
 			CharacterMotion++;
 			if (CharacterMotion == CHARACTERMOTION_LEFT_END)
 				CharacterMotion = CHARACTERMOTION_LEFT_1;
 
 		}
-		if(CharacterDirection == CHARACTERMOTION_RIGHT)
+		if (CharacterDirection == CHARACTERMOTION_RIGHT)
 		{
+<<<<<<< HEAD
 			CharacterPos_x -= (JUMP_DISTANCE / 4);
 			CharacterPos_y -= JUMP_DISTANCE * sin(Radian - M_PI / 2);
+=======
+			CharacterPos_x += JUMP_DISTANCE;
+			CharacterPos_y -= JUMP_DISTANCE * sin(Radian);
+>>>>>>> e809c88bef0b764c6615d91478e57142c97bfe0a
 			CharacterMotion++;
 			if (CharacterMotion == CHARACTERMOTION_RIGHT_END)
 				CharacterMotion = CHARACTERMOTION_RIGHT_1;
 
 		}
-		InvalidateRect(hWnd, NULL, TRUE);
-		Sleep(200);
+		InvalidateRect(hWnd, NULL, FALSE);
 	}
 }
 

@@ -1,0 +1,5 @@
+﻿  소스.cpp
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_jump\win_api_jump\소스.cpp(115): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_jump\win_api_jump\소스.cpp(140): warning C4244: '=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\정재훈\jungjaehoon\jungjaehoon\submit\win_api_jump\win_api_jump\소스.cpp(207): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Win_api_Jump.vcxproj -> C:\정재훈\jungjaehoon\JungJaehoon\Submit\Win_api_Jump\Debug\Win_api_Jump.exe
