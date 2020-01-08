@@ -1,0 +1,6 @@
+﻿  소스.cpp
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_transparentblt_move,jump\win_api_transparentblt_move,jump\소스.cpp(56): warning C4700: 초기화되지 않은 'hOldBitmap' 지역 변수를 사용했습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_transparentblt_move,jump\win_api_transparentblt_move,jump\소스.cpp(56): warning C4700: 초기화되지 않은 'hImage' 지역 변수를 사용했습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_transparentblt_move,jump\win_api_transparentblt_move,jump\소스.cpp(56): warning C4700: 초기화되지 않은 'hdc' 지역 변수를 사용했습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_transparentblt_move,jump\win_api_transparentblt_move,jump\소스.cpp(76): warning C4700: 초기화되지 않은 'hMemDC' 지역 변수를 사용했습니다.
+  Win_api_TransparentBlt_Move,Jump.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\Win_api_TransparentBlt_Move,Jump\Debug\Win_api_TransparentBlt_Move,Jump.exe
