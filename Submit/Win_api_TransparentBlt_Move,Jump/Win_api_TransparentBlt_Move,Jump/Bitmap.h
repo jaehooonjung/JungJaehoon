@@ -51,11 +51,12 @@ private:
 	int CharacterPos_y;
 	int CharacterDirection;
 	int CharacterMotion;
+	int m_iJumpStartTime;
 public:
 	void init(HDC hdc, string bitmapname);
 	void Draw(HDC hdc);
 	void Move(int direction);
-	void Jump(HWND hWnd);
+	void Jump(HWND hWnd,int time);
 	float DegreeToRadian(int degree);
 	Bitmap();
 	~Bitmap();

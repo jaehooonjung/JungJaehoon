@@ -4,8 +4,9 @@ HINSTANCE g_hInst;
 LPCTSTR lpszClass = TEXT("TransparentBlt");
 SYSTEMTIME st;
 Bitmap BitmapManager;
-//void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime);
 
+void TimeIntervalCalculation(int nowmisec, int& mistandardsec);
+void SetStartTime();
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
 {
@@ -40,20 +41,40 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 	return (int)Message.wParam;
 }
 
-float Radian;
+enum CHARACTERSTATE
+{
+	CHARACTERSTATE_MOVE,
+	CHARACTERSTATE_JUMP
+};
+
+int StartMiSec;
+int MiSecTmp;
+CHARACTERSTATE CharacterState = CHARACTERSTATE_MOVE;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
-	HDC hdc, hMemDC;
+	HDC hdc;
 	PAINTSTRUCT ps;
-	//HBITMAP hImage, hOldBitmap;
 
 	switch (iMessage)
 	{
 	case WM_CREATE:
 		SetTimer(hWnd, 1, 100, NULL);
-		SendMessage(hWnd, WM_TIMER, 1, 0);
-		BitmapManager.init(hdc, "image.bmp");
+		SendMessage(hWnd, WM_TIMER, 100, 0);
+	case WM_TIMER:
+		if (CharacterState != CHARACTERSTATE_JUMP)
+			return 0;
+		GetLocalTime(&st);
+		MiSecTmp = StartMiSec;
+
+		TimeIntervalCalculation(st.wMilliseconds, MiSecTmp);
+		if (SecTmp == 0)
+			return 0;
+		BitmapManager.Jump(hWnd, SecTmp);
+		InvalidateRect(hWnd, NULL, TRUE);
+		if (SecTmp == 6)
+			CharacterState = CHARACTERSTATE_MOVE;
+		return 0;
 	case WM_KEYDOWN:
 		switch (wParam)
 		{
@@ -62,32 +83,40 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 			BitmapManager.Move(wParam);
 			break;
 		case VK_SPACE:
-			BitmapManager.Jump(hWnd);
+			CharacterState = CHARACTERSTATE_JUMP;
+			SetStartTime();
+			break;
 		}
 		InvalidateRect(hWnd, NULL, TRUE);
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
+		BitmapManager.init(hdc, "image.bmp");
 		BitmapManager.Draw(hdc);
 		EndPaint(hWnd, &ps);
 		return 0;
 	case WM_DESTROY:
+		KillTimer(hWnd, 1);
 		PostQuitMessage(0);
-		DeleteDC(hMemDC);
 		return 0;
 	}
 	return(DefWindowProc(hWnd, iMessage, wParam, lParam));
 }
 
-/*
-void CALLBACK TimeProc(HWND hWnd, UINT uMsg, UINT idEvent, DWORD dwTime)
+void TimeIntervalCalculation(int nowmisec, int& mistandardsec)
 {
-	GetLocalTime(&st);
-	int MinTmp = StartMinute, SecTmp = StartSecond;
-	TimeIntervalCalculation(st.wMinute, st.wSecond, MinTmp, SecTmp);
-	wsprintf(sTime, TEXT("Time : %d  :  %d"), MinTmp, SecTmp);
-	InvalidateRect(hWnd, &rt, TRUE);
+	if (nowmisec >= mistandardsec)
+	{
+		mistandardsec = nowmisec - mistandardsec;
+	}
+	else 
+	{
+		mistandardsec = (nowmisec + 1000) - mistandardsec;
+	}
 }
 
-*/
-
+void SetStartTime()
+{
+	GetLocalTime(&st);
+	StartMiSec = st.wMilliseconds;
+}

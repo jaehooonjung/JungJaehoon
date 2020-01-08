@@ -4,10 +4,13 @@
 
 Bitmap::Bitmap()
 {
+	m_size.cx = NULL;
 }
 
 void Bitmap::init(HDC hdc, string bitmapname)
 {
+	if (m_size.cx != NULL)
+		return;
 	LPCTSTR tmp = bitmapname.c_str();
 	m_MemDC = CreateCompatibleDC(hdc);
 	m_phImage = (HBITMAP)LoadImage(NULL, TEXT(tmp),
@@ -15,7 +18,6 @@ void Bitmap::init(HDC hdc, string bitmapname)
 	m_phOldBitmap = (HBITMAP)SelectObject(m_MemDC, m_phImage);
 	BITMAP bitmap;
 	GetObject(m_phImage, sizeof(BITMAP), &bitmap);
-
 	m_size.cx = bitmap.bmWidth;
 	m_size.cy = bitmap.bmHeight;
 
@@ -53,28 +55,23 @@ void Bitmap::Move(int direction)
 }
 
 
-void Bitmap::Jump(HWND hWnd)
+void Bitmap::Jump(HWND hWnd, int time)
 {
 	if (CharacterDirection == CHARACTERMOTION_BOTTOM)
 		return;
 	float Radian;
-	for (int i = 0; i <= 180; i++)
-	{
-		Radian = DegreeToRadian(i);
+		Radian = DegreeToRadian(time*30);
 		switch (CharacterDirection)
 		{
 		case CHARACTERMOTION_LEFT:
-			CharacterPos_x = CharacterPos_x - JUMP_DISTANCE / 50;
+			CharacterPos_x = CharacterPos_x - MOVE_DISTANCE;
 			CharacterPos_y = CHARACTER_Y_POSDEFAULT + JUMP_DISTANCE * -sin(Radian);
 			break;
 		case CHARACTERMOTION_RIGHT:
-			CharacterPos_x = CharacterPos_x + JUMP_DISTANCE / 50;
+			CharacterPos_x = CharacterPos_x + MOVE_DISTANCE;
 			CharacterPos_y = CHARACTER_Y_POSDEFAULT + JUMP_DISTANCE * -sin(Radian);
 			break;
 		}
-		InvalidateRect(hWnd, NULL, FALSE);
-	}
-
 }	
 
 float Bitmap::DegreeToRadian(int degree)
