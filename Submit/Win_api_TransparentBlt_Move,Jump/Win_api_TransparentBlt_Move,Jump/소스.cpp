@@ -5,7 +5,7 @@ LPCTSTR lpszClass = TEXT("TransparentBlt");
 SYSTEMTIME st;
 Bitmap BitmapManager;
 
-void TimeIntervalCalculation(int nowmisec, int& mistandardsec);
+void TimeIntervalCalculation(int nowsec,int nowmisec,int & standardsec,int& standardmisec);
 void SetStartTime();
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdParam, int nCmdShow)
@@ -47,8 +47,8 @@ enum CHARACTERSTATE
 	CHARACTERSTATE_JUMP
 };
 
-int StartMiSec;
-int MiSecTmp;
+int StartSec,StartMiSec;
+int SecTmp,MiSecTmp;
 CHARACTERSTATE CharacterState = CHARACTERSTATE_MOVE;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -59,20 +59,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	switch (iMessage)
 	{
 	case WM_CREATE:
-		SetTimer(hWnd, 1, 100, NULL);
-		SendMessage(hWnd, WM_TIMER, 100, 0);
+		SetTimer(hWnd, 1, 1, NULL);
+		SendMessage(hWnd, WM_TIMER, 10, 0);
 	case WM_TIMER:
 		if (CharacterState != CHARACTERSTATE_JUMP)
 			return 0;
 		GetLocalTime(&st);
 		MiSecTmp = StartMiSec;
-
-		TimeIntervalCalculation(st.wMilliseconds, MiSecTmp);
-		if (SecTmp == 0)
-			return 0;
-		BitmapManager.Jump(hWnd, SecTmp);
+		SecTmp = StartSec;
+		TimeIntervalCalculation(st.wSecond , st.wMilliseconds, SecTmp, MiSecTmp);
+		BitmapManager.Jump(hWnd, MiSecTmp);
 		InvalidateRect(hWnd, NULL, TRUE);
-		if (SecTmp == 6)
+		if (MiSecTmp >= 950)
 			CharacterState = CHARACTERSTATE_MOVE;
 		return 0;
 	case WM_KEYDOWN:
@@ -80,9 +78,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		{
 		case VK_LEFT:
 		case VK_RIGHT:
+			if (CharacterState == CHARACTERSTATE_JUMP)
+				return 0; //점프 중 이동 예외처리 
 			BitmapManager.Move(wParam);
 			break;
 		case VK_SPACE:
+			if (CharacterState == CHARACTERSTATE_JUMP)
+				return 0; //더블점프 예외처리 
 			CharacterState = CHARACTERSTATE_JUMP;
 			SetStartTime();
 			break;
@@ -103,20 +105,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	return(DefWindowProc(hWnd, iMessage, wParam, lParam));
 }
 
-void TimeIntervalCalculation(int nowmisec, int& mistandardsec)
+void TimeIntervalCalculation(int nowsec, int nowmisec, int & standardsec, int& standardmisec)
 {
-	if (nowmisec >= mistandardsec)
+
+	if (nowsec >= standardsec)
 	{
-		mistandardsec = nowmisec - mistandardsec;
+		standardsec = nowsec - standardsec;
+	}
+	else
+	{
+		standardsec = (nowsec + 60) - standardsec;
+	}
+
+	if (nowmisec >= standardmisec)
+	{
+		standardmisec = nowmisec - standardmisec;
 	}
 	else 
 	{
-		mistandardsec = (nowmisec + 1000) - mistandardsec;
+		standardmisec = (nowmisec + 1000) - standardmisec;
 	}
 }
 
 void SetStartTime()
 {
 	GetLocalTime(&st);
+	StartSec = st.wSecond;
 	StartMiSec = st.wMilliseconds;
 }

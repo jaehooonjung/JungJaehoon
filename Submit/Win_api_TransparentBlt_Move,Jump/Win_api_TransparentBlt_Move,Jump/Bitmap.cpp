@@ -29,6 +29,8 @@ void Bitmap::init(HDC hdc, string bitmapname)
 
 void Bitmap::Draw(HDC hdc)
 {
+	if (CharacterPos_y < 300)
+		int a = 2;
 	TransparentBlt(hdc, CharacterPos_x, CharacterPos_y, m_size.cx / 4, m_size.cy / 4, m_MemDC, (m_size.cx / 4) * CharacterMotion, (m_size.cy / 4) * CharacterDirection, m_size.cx / 4, m_size.cy / 4, RGB(255, 0, 255));
 }
 
@@ -59,19 +61,22 @@ void Bitmap::Jump(HWND hWnd, int time)
 {
 	if (CharacterDirection == CHARACTERMOTION_BOTTOM)
 		return;
+	float dgree = (float)time /100 * 18;
 	float Radian;
-		Radian = DegreeToRadian(time*30);
+		Radian = DegreeToRadian(dgree);
 		switch (CharacterDirection)
 		{
 		case CHARACTERMOTION_LEFT:
-			CharacterPos_x = CharacterPos_x - MOVE_DISTANCE;
+			CharacterPos_x = CharacterPos_x - 3;
 			CharacterPos_y = CHARACTER_Y_POSDEFAULT + JUMP_DISTANCE * -sin(Radian);
 			break;
 		case CHARACTERMOTION_RIGHT:
-			CharacterPos_x = CharacterPos_x + MOVE_DISTANCE;
+			CharacterPos_x = CharacterPos_x + 3;
 			CharacterPos_y = CHARACTER_Y_POSDEFAULT + JUMP_DISTANCE * -sin(Radian);
 			break;
 		}
+		if (CharacterPos_y > CHARACTER_Y_POSDEFAULT)
+			CharacterPos_y = CHARACTER_Y_POSDEFAULT;
 }	
 
 float Bitmap::DegreeToRadian(int degree)
