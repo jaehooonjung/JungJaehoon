@@ -1,5 +1,5 @@
 #include "ChesspieceManager.h"
-#include "BlockManager.h"
+#include "ChessGameManager.h"
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 HINSTANCE g_hInst;
@@ -43,7 +43,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 
 ChesspieceManager m_ChesspieceManager;
 BlockManager m_BlockManager;
+ChessGameManager m_ChessGameManager;
 GAMESTATE GameState = GAMESTATE_GAMEOVER;
+Chesspiece* ChesspieceTmp;
+int mouse_x, mouse_y;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
@@ -52,10 +55,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 
 	switch (iMessage)
 	{
+	case WM_LBUTTONDOWN:
+		if ((GameState != GAMESTATE_WHITE_THINKING) && (GameState != GAMESTATE_BLACK_THINKING))
+			return 0;
+		mouse_x = LOWORD(lParam);
+		mouse_y = HIWORD(lParam);
+		ChesspieceTmp = m_ChesspieceManager.ChesspieceSelect(GameState, mouse_x, mouse_y);
+		//m_BlockManager.ShowRoad(hdc, GameState,ChesspieceTmp->ChessPieceOutput(), ChesspieceTmp->ChessPiecePositionOutput());
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		init(hdc);
-		m_BlockManager.BlockDraw(hdc);
 		m_ChesspieceManager.ChesspieceDraw(hdc);
 		EndPaint(hWnd, &ps);
 		return 0;
@@ -71,8 +80,15 @@ void init(HDC hdc)
 	if (GameState != GAMESTATE_GAMEOVER)
 		return;
 	else
-		GameState = GAMESTATE_PLAYING;
+		GameState = GAMESTATE_WHITE_THINKING;
 	m_BlockManager.BlockInit(hdc);
 	m_ChesspieceManager.ChesspieceManagerInit(hdc);
-
+	m_BlockManager.BlockDraw(hdc);
 }
+
+/*
+1. 해당장소에 체스말이 있는지 확인
+-> return
+2. 체스말이 있다면 체스말의 위치와 종류를 블록으로 보낸다.
+3. 블록에서 기보를 보여준다.
+*/

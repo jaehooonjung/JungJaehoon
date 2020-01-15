@@ -8,8 +8,7 @@ private:
 	HBITMAP m_phOldBitmap;
 	SIZE m_size;
 	BLOCKCOLOR m_BlockColor;
-	int m_iBlockPos_x;
-	int m_iBlockPos_y;
+	Position m_BlockPos;
 public:
 	void BlockInit(HDC hdc, BLOCKCOLOR blockcolor, int x, int y);
 	void BlockDraw(HDC hdc);

@@ -51,13 +51,22 @@ void Chesspiece::ChessPieceColorSet(CHESSPIECECOLOR chesspiececolor)
 
 void Chesspiece::ChessPiecePositionSet(int x, int y)
 {
-	m_iChesspiecePos_x = x;
-	m_iChesspiecePos_y = y;
+	m_ChesspiecePos.Position_x = x;
+	m_ChesspiecePos.Position_y = y;
 }
 
 void Chesspiece::ChessPieceDraw(HDC hdc)
 {
-	TransparentBlt(hdc, m_iChesspiecePos_x, m_iChesspiecePos_y, CHESSPIECESIZE, CHESSPIECESIZE, m_MemDC, 0, 0, m_size.cx, m_size.cy, RGB(255, 0, 255));
+	TransparentBlt(hdc, m_ChesspiecePos.Position_x, m_ChesspiecePos.Position_y, CHESSPIECESIZE, CHESSPIECESIZE, m_MemDC, 0, 0, m_size.cx, m_size.cy, RGB(255, 0, 255));
+}
+
+bool Chesspiece::ChessPiecePositionCheck(int mouse_x, int mouse_y)
+{
+	if ((m_ChesspiecePos.Position_x < mouse_x) && (m_ChesspiecePos.Position_x + CHESSPIECESIZE > mouse_x) &&
+		(m_ChesspiecePos.Position_y < mouse_y) && (m_ChesspiecePos.Position_y + CHESSPIECESIZE > mouse_y))
+		return true;
+	else
+		return false;
 }
 
 Chesspiece::~Chesspiece()

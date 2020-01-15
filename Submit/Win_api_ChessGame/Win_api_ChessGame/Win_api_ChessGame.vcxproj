@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BlockManager.cpp" />
+    <ClCompile Include="ChessGameManager.cpp" />
     <ClCompile Include="Chesspiece.cpp" />
     <ClCompile Include="ChesspieceManager.cpp" />
     <ClCompile Include="소스.cpp" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="Block.h" />
     <ClInclude Include="BlockManager.h" />
+    <ClInclude Include="ChessGameManager.h" />
     <ClInclude Include="Chesspiece.h" />
     <ClInclude Include="ChesspieceManager.h" />
     <ClInclude Include="Mecro.h" />

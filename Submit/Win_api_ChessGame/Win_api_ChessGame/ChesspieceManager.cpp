@@ -108,6 +108,27 @@ void ChesspieceManager::ChesspieceDelete()
 	m_BlackChesspieceList.clear();
 }
 
+Chesspiece* ChesspieceManager::ChesspieceSelect(GAMESTATE gamestate, int mouse_x, int mouse_y)
+{
+	switch (gamestate)
+	{
+	case GAMESTATE_WHITE_THINKING:
+		for (auto iter = m_WhiteChesspieceList.begin(); iter != m_WhiteChesspieceList.end(); iter++)
+		{
+			if ((*iter)->ChessPiecePositionCheck(mouse_x, mouse_y) == true)
+				return *iter;
+		}
+		break;
+	case GAMESTATE_BLACK_THINKING:
+		for (auto iter = m_BlackChesspieceList.begin(); iter != m_BlackChesspieceList.end(); iter++)
+		{
+			if ((*iter)->ChessPiecePositionCheck(mouse_x, mouse_y) == true)
+				return *iter;
+		}
+		break;
+	}
+}
+
 ChesspieceManager::~ChesspieceManager()
 {
 	ChesspieceDelete();

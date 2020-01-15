@@ -25,6 +25,9 @@ void BlockManager::BlockInit(HDC hdc)
 		y += CHESSBOARDBLOCKSIZE;
 		x = CHESSBOARDDRAWSTARTPOSX;
 	}
+	
+	Block*MarkingBlock = new Block;
+	MarkingBlock->BlockInit(hdc, BLOCKCOLOR_MAKER, 0, 0);
 }
 
 void BlockManager::BlockDelete()

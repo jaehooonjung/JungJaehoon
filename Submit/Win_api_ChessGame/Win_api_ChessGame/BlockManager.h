@@ -5,6 +5,7 @@ class BlockManager
 {
 private:
 	vector<Block*> BlockList;
+	Block*MarkingBlock;
 public:
 	void BlockInit(HDC hdc);
 	void BlockDelete();
