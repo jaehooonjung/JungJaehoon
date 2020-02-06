@@ -12,7 +12,6 @@ using namespace std;
 #define CHESSBOARDBLOCKSIZE 50
 #define CHESSPIECESIZE 50
 #define CHESSPIECEMOVESPEED 10
-#define DRAWFLAGMAX 50
 
 enum GAMESTATE
 {

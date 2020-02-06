@@ -35,7 +35,6 @@ void ChessGame::GameDarw(HDC hdc)
 			m_BlockManager.MarkingBlockDraw(hdc, m_LastSelectChesspiece->PointListOutput()[i]);
 		}
 	}
-
 }
 
 void ChessGame::MouseClick(POINT mouse, HWND hWnd)
@@ -136,7 +135,6 @@ void ChessGame::Update(HWND hWnd,HDC hdc)
 {
 	WinCheck(hWnd);
 	Promotion(hWnd, hdc);
-	//체크 관련
 }
 
 void ChessGame::Promotion(HWND hWnd, HDC hdc)
@@ -206,8 +204,6 @@ void ChessGame::WinCheck(HWND hWnd)
 		GameStateChangeToGameOver();
 		MessageBox(hWnd, TEXT("흑의 체크메이트입니다."), TEXT("게임오버"), MB_OK);
 	}
-
-		
 }
 
 ChessGame::~ChessGame()

@@ -48,7 +48,6 @@ public:
 	{
 		return m_destinationPos;
 	}
-
 	~Chesspiece();
 };
 

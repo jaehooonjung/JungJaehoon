@@ -96,7 +96,6 @@ void Chesspiece::DeleteBitmap()
 	SelectObject(m_MemDC, m_phOldBitmap);
 	DeleteObject(m_phImage);
 	DeleteDC(m_MemDC);
-
 }
 
 bool Chesspiece::CheckCheck(POINT pos)

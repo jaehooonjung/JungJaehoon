@@ -64,7 +64,6 @@ void ChesspieceManager::ChesspieceCreate(HDC hdc, CHESSPIECE chesspiece)
 		{
 			whitepiece = new Knight;
 			blackpiece = new Knight;
-
 		}
 		else if (chesspiece == CHESSPIECE_BISHOP)
 		{
@@ -80,7 +79,6 @@ void ChesspieceManager::ChesspieceCreate(HDC hdc, CHESSPIECE chesspiece)
 		{
 			whitepiece = new Queen;
 			blackpiece = new Queen;
-
 		}
 		else if (chesspiece == CHESSPIECE_KING)
 		{
@@ -571,7 +569,6 @@ void ChesspieceManager::ChesspieceUpdate(Chesspiece*selectedchesspiece)
 		}
 		break;
 	}
-
 }
 
 void ChesspieceManager::ChesspiecePromotion(HDC hdc,Chesspiece*selectedchesspiece, CHESSPIECE chesspiece)

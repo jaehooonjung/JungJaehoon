@@ -37,7 +37,6 @@ void Block::BlockPositionChange(POINT pos)
 {
 	m_BlockPos.x = pos.x;
 	m_BlockPos.y = pos.y;
-
 }
 
 Block::~Block()

@@ -26,7 +26,6 @@ void BlockManager::BlockInit(HDC hdc)
 		pos.x = CHESSBOARDDRAWSTARTPOSX;
 		pos.y += CHESSBOARDBLOCKSIZE;
 	}
-
 }
 
 void BlockManager::BlockDelete()
