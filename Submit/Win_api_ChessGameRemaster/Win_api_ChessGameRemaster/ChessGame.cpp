@@ -11,7 +11,6 @@ void ChessGame::Gameinit(HDC hdc, HWND hWnd)
 {
 	if (m_GameState != GAMESTATE_GAMEOVER)
 		return;
-	DrawFlag = 0; 
 	m_ChesspieceManager.ChesspieceManagerInit(hdc);
 	m_BlockManager.BlockInit(hdc);
 	m_BlockManager.MarkingBlockInit(hdc);

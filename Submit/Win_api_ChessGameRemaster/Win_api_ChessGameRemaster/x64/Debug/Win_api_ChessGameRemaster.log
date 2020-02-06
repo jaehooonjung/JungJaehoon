@@ -1,17 +1,17 @@
 ﻿  Block.cpp
   BlockManager.cpp
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\blockmanager.cpp(73): warning C4805: '==': 연산에 'BOOL' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\blockmanager.cpp(72): warning C4805: '==': 연산에 'BOOL' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
   ChessGame.cpp
   Chesspiece.cpp
   ChesspieceManager.cpp
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiecemanager.cpp(539): warning C4805: '==': 연산에 'BOOL' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiecemanager.cpp(558): warning C4805: '==': 연산에 'BOOL' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiecemanager.cpp(537): warning C4805: '==': 연산에 'BOOL' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiecemanager.cpp(556): warning C4805: '==': 연산에 'BOOL' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
   소스.cpp
   코드를 생성하고 있습니다...
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(127): warning C4715: 'Pawn::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(186): warning C4715: 'Bishop::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(156): warning C4715: 'Knight::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(208): warning C4715: 'Queen::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(220): warning C4715: 'King::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
-c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(197): warning C4715: 'Rook::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(126): warning C4715: 'Pawn::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(207): warning C4715: 'Queen::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(196): warning C4715: 'Rook::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(185): warning C4715: 'Bishop::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(219): warning C4715: 'King::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_chessgameremaster\win_api_chessgameremaster\chesspiece.cpp(155): warning C4715: 'Knight::ChessPieceSet': 모든 제어 경로에서 값을 반환하지는 않습니다.
   Win_api_ChessGameRemaster.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\Win_api_ChessGameRemaster\x64\Debug\Win_api_ChessGameRemaster.exe
