@@ -12,7 +12,6 @@ public:
 	void BlockDraw(HDC hdc);
 	void MarkingBlockInit(HDC hdc);
 	void MarkingBlockDraw(HDC hdc, POINT pos);
-	bool OnTheBlockCheck(POINT pos);
 	BlockManager();
 	~BlockManager();
 };

@@ -60,21 +60,6 @@ void BlockManager::MarkingBlockDraw(HDC hdc, POINT pos)
 	m_MarkingBlock->BlockDraw(hdc);
 }
 
-bool BlockManager::OnTheBlockCheck(POINT pos)
-{
-	pos.x += CHESSPIECESIZE / 2;
-	pos.y += CHESSPIECESIZE / 2;
-	RECT Tmp;
-
-	for (auto iter = BlockList.begin(); iter != BlockList.end(); iter++)
-	{
-		Tmp = { (*iter)->BlockPositionOutput().x,(*iter)->BlockPositionOutput().y ,(*iter)->BlockPositionOutput().x + CHESSPIECESIZE,(*iter)->BlockPositionOutput().y + CHESSPIECESIZE };
-		if (PtInRect(&Tmp, pos) == true)
-			return true;
-	}
-	return false;
-}
-
 BlockManager::~BlockManager()
 {
 	BlockDelete();
