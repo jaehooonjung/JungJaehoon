@@ -1,0 +1,4 @@
+﻿  소스.cpp
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_peekmessage\win_api_peekmessage\소스.cpp(57): warning C4101: 'hdc' :참조되지 않은 지역 변수입니다.
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_peekmessage\win_api_peekmessage\소스.cpp(58): warning C4101: 'ps' :참조되지 않은 지역 변수입니다.
+  Win_api_PeekMessage.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\Win_api_PeekMessage\Debug\Win_api_PeekMessage.exe

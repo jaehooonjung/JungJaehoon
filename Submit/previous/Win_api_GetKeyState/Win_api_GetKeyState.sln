@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win_api_GetKeyState", "Win_api_GetKeyState\Win_api_GetKeyState.vcxproj", "{59836924-5BB5-46FA-8E6C-A8C7012320ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Debug|x64.ActiveCfg = Debug|x64
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Debug|x64.Build.0 = Debug|x64
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Debug|x86.Build.0 = Debug|Win32
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Release|x64.ActiveCfg = Release|x64
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Release|x64.Build.0 = Release|x64
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Release|x86.ActiveCfg = Release|Win32
+		{59836924-5BB5-46FA-8E6C-A8C7012320ED}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B73E1B9-B632-477D-AE78-7FEB8F3C87A3}
+	EndGlobalSection
+EndGlobal

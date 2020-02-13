@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win_api_PeekMessage", "Win_api_PeekMessage\Win_api_PeekMessage.vcxproj", "{8799303D-8574-4AC8-90F4-2E59E1505542}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Debug|x64.ActiveCfg = Debug|x64
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Debug|x64.Build.0 = Debug|x64
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Debug|x86.ActiveCfg = Debug|Win32
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Debug|x86.Build.0 = Debug|Win32
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Release|x64.ActiveCfg = Release|x64
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Release|x64.Build.0 = Release|x64
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Release|x86.ActiveCfg = Release|Win32
+		{8799303D-8574-4AC8-90F4-2E59E1505542}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CE0197A-5BDC-49F4-95B8-F50C449136A6}
+	EndGlobalSection
+EndGlobal
