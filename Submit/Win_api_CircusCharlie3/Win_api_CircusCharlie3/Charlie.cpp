@@ -1,0 +1,81 @@
+#include "Charlie.h"
+
+
+
+Charlie::Charlie()
+{
+}
+
+void Charlie::CharlieInit(HDC hdc)
+{
+
+
+
+
+	//.Init(HDC hdc, LPCTSTR bitmapname, POINT pos)
+	//.Init(HDC hdc, LPCTSTR backgroundbitmapname, LPCTSTR bitmapname, POINT startpos, POINT endpos)
+	m_CharacterMotion = CHARACTER_MOTION_MOVE_1;
+	POINT postmp;
+	postmp.x = CHARACTER_X_POSDEFAULT + START_POS_X;
+	postmp.y = CHARACTER_Y_POSDEFAULT + START_POS_Y;
+	m_Charlie0.Init(hdc, "player0.bmp", "player0.bmp", postmp);
+	m_Charlie1.Init(hdc, "player1.bmp", "player1.bmp", postmp);
+	m_Charlie2.Init(hdc, "player2.bmp", "player2.bmp", postmp);
+
+	m_iMoveDistance = 0;
+}
+
+void Charlie::CharlieDraw(HDC hdc)
+{
+	switch (m_CharacterMotion)
+	{
+	case CHARACTER_MOTION_MOVE_1:
+		m_Charlie0.Draw(hdc, NULL);
+		break;
+	case CHARACTER_MOTION_MOVE_2:
+		m_Charlie1.Draw(hdc, NULL);
+		break;
+	case CHARACTER_MOTION_MOVE_END:
+		m_Charlie2.Draw(hdc, NULL);
+		break;
+	}
+}
+
+void Charlie::CharlieMove(int keyflag)
+{
+	switch (m_CharacterMotion)
+	{
+	case CHARACTER_MOTION_MOVE_1:
+		m_CharacterMotion = CHARACTER_MOTION_MOVE_2;
+		break;
+	case CHARACTER_MOTION_MOVE_2:
+		m_CharacterMotion = CHARACTER_MOTION_MOVE_END;
+		break;
+	case CHARACTER_MOTION_MOVE_END:
+		m_CharacterMotion = CHARACTER_MOTION_MOVE_1;
+		break;
+	}
+
+	switch (keyflag)
+	{
+	case VK_LEFT:
+		m_iMoveDistance--;
+		if (m_iMoveDistance < 0)
+			m_iMoveDistance = 0;
+		break;
+	case VK_RIGHT:
+		m_iMoveDistance++;
+		if (m_iMoveDistance >= 100)
+		{
+			//  // // // //
+			// ¸ñÇ¥µµÂø  //
+			// // // //  //
+		}
+
+		break;
+	}
+}
+
+Charlie::~Charlie()
+{
+}
