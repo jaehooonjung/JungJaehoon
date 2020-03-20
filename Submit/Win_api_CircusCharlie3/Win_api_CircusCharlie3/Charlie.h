@@ -16,6 +16,6 @@ public:
 	void CharlieInit(HDC hdc);
 	void CharlieDraw(HDC hdc);
 	void CharlieMove(int keyflag);
-
+	void CharlieJump();
 	~Charlie();
 };

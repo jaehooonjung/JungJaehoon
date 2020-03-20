@@ -39,6 +39,7 @@ void Game::KeyboardInputCheck(HWND hWnd)
 	if (GetKeyState(VK_RIGHT) & 0x8000)
 		keyflag = VK_RIGHT;
 
+
 	if (keyflag == NULL)
 		return;
 	else
@@ -46,7 +47,7 @@ void Game::KeyboardInputCheck(HWND hWnd)
 		m_BackgroundManager.Move(keyflag);
 		m_CharlieManager.CharlieMove(keyflag);
 		// 각종 화살표에 맞는 작업
-		InvalidateRect(hWnd, NULL, TRUE);
+		InvalidateRect(hWnd, NULL, FALSE);
 	}
 
 }

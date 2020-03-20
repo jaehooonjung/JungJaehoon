@@ -76,6 +76,11 @@ void Charlie::CharlieMove(int keyflag)
 	}
 }
 
+void Charlie::CharlieJump()
+{
+
+}
+
 Charlie::~Charlie()
 {
 }

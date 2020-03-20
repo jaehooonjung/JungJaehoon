@@ -8,10 +8,10 @@
 using namespace std;
 
 #define START_POS_X 0
-#define START_POS_Y 25
+#define START_POS_Y 70
 
-#define AUDIENCESEAT_LENGTH 3
-#define AUDIENCESEAT_ARRAY 3
+#define AUDIENCESEAT_LENGTH 4
+#define AUDIENCESEAT_ARRAY 4
 
 
 #define CHARACTER_X_POSDEFAULT 20

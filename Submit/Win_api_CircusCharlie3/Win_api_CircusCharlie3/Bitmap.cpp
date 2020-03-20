@@ -45,12 +45,11 @@ void DubleBufferingBitmap::Init(HDC hdc, LPCTSTR backgroundbitmapname, LPCTSTR b
 	m_phImage[0] = CreateCompatibleBitmap(hdc, 1024, 768);
 	m_phOldBitmap[0] = (HBITMAP)SelectObject(m_MemDC[0], m_phImage[0]);
 
-
 	m_MemDC[1] = CreateCompatibleDC(m_MemDC[0]);
 	m_phImage[1] = (HBITMAP)LoadImage(NULL, backgroundbitmapname, IMAGE_BITMAP, 0, 0
 		, LR_CREATEDIBSECTION | LR_DEFAULTSIZE | LR_LOADFROMFILE);
 	m_phOldBitmap[1] = (HBITMAP)SelectObject(m_MemDC[1], m_phImage[1]);
-
+	
 	m_MemDC[2] = CreateCompatibleDC(m_MemDC[0]);
 	m_phImage[2] = (HBITMAP)LoadImage(NULL, bitmapname, IMAGE_BITMAP, 0, 0
 		, LR_CREATEDIBSECTION | LR_DEFAULTSIZE | LR_LOADFROMFILE);
@@ -78,7 +77,6 @@ void DubleBufferingBitmap::Draw(HDC hdc, int endline)
 	}
 	else
 		sizetmp = m_Size.cx;
-
 	BitBlt(m_MemDC[0], 0, 0, 1024, 768, m_MemDC[1], 0, 0, SRCCOPY);
 	TransparentBlt(m_MemDC[0], m_BitmapPos.x, m_BitmapPos.y, m_Size.cx, m_Size.cy, m_MemDC[2], 0, 0, sizetmp, m_Size.cy, RGB(255, 0, 255));
 	TransparentBlt(hdc, m_BitmapPos.x, m_BitmapPos.y, sizetmp, m_Size.cy, m_MemDC[0], 0, 0, sizetmp, m_Size.cy, RGB(255, 0, 255));
