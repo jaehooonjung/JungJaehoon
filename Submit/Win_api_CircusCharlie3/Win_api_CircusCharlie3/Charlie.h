@@ -1,8 +1,18 @@
 #pragma once
-#include "Bitmap.h"
+#include"Bitmap.h"
+#include "TimeManager.h"
+struct JumpTimeInfo
+{
+	Time StartTime;
+	Time EndTime;
+	Time PassTime;
+};
+
 class Charlie
 {
 private:
+	RECT m_ObjectArea;
+	JumpTimeInfo m_JumpTimeInfo;
 	Bitmap m_CharlieDie;
 	DubleBufferingBitmap m_Charlie0;
 	DubleBufferingBitmap m_Charlie1;
@@ -10,12 +20,19 @@ private:
 	DubleBufferingBitmap m_CharlieWin1;
 	DubleBufferingBitmap m_CharlieWin2;
 	CHARACTER_MOTION_MOVE m_CharacterMotion;
-	int m_iMoveDistance;
 public:
-	Charlie();
 	void CharlieInit(HDC hdc);
 	void CharlieDraw(HDC hdc);
 	void CharlieMove(int keyflag);
-	void CharlieJump();
+	bool CharlieJump();
+	void JumpStartTimeSet();
+	void CharlieStateChange(CHARACTER_STATE state);
+	void CharlieReset();
+	Charlie();
+	inline RECT CharlieObjectAreaOutput()
+	{
+		return m_ObjectArea;
+	}
 	~Charlie();
 };
+

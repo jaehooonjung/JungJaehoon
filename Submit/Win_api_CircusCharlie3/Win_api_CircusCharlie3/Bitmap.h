@@ -37,7 +37,7 @@ private:
 	HDC m_MemDC[3];
 	HBITMAP m_phImage[3];
 	HBITMAP m_phOldBitmap[3];
-	SIZE m_BackgroundBitmapSize;
+	//SIZE m_BackgroundBitmapSize;
 public:
 	void Init(HDC hdc, LPCTSTR backgroundbitmapname, LPCTSTR bitmapname, POINT pos);
 	void Draw(HDC hdc, int endline);
@@ -46,3 +46,36 @@ public:
 	DubleBufferingBitmap();
 	~DubleBufferingBitmap();
 };
+
+class AniBitmap : public DubleBufferingBitmap
+{
+private:
+	HDC m_MemDC[4];
+	HBITMAP m_phImage[4];
+	HBITMAP m_phOldBitmap[4];
+	BITMAP_CHANGE m_BitmapChangeNum;
+	int m_iDistancePostion;
+	bool m_bCreateCheckFlag;
+	RECT m_ObjectArea;
+public:
+	void Init(HDC hdc, LPCTSTR backgroundbitmapname, LPCTSTR bitmapname1, LPCTSTR bitmapname2);
+	void Draw(HDC hdc, int endline);
+	void DistancePostionSet(int pos_x);
+	void CreateCheckFlagChange();
+	void ObjectAreaChange(int left,int top, int right, int bottom);
+	AniBitmap();
+	inline int DistancePostionOutput()
+	{
+		return m_iDistancePostion;
+	}
+	inline bool CreateCheckFlagOutput()
+	{
+		return m_bCreateCheckFlag;
+	}
+	inline RECT ObjectAreaOutput()
+	{
+		return m_ObjectArea;
+	}
+	~AniBitmap();
+};
+

@@ -5,7 +5,6 @@ HINSTANCE g_hInst;
 HWND hWnd;
 LPCTSTR lpszClass = TEXT("CircusCharlie");
 
-SYSTEMTIME st;
 Game g_GameManager;
 //Charlie g_CharlieManager;
 
@@ -49,11 +48,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	switch (iMessage)
 	{
 	case WM_CREATE:
-		SetTimer(hWnd, 1, 80, NULL);
-		SendMessage(hWnd, WM_TIMER, 80, 0);
+		SetTimer(hWnd, 1, 50, NULL);
+		SendMessage(hWnd, WM_TIMER, 50, 0);
 		return 0;
 	case WM_TIMER:
 		g_GameManager.KeyboardInputCheck(hWnd);
+		InvalidateRect(hWnd, NULL, FALSE);
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);

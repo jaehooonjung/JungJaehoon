@@ -144,6 +144,7 @@
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Charlie.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="소스.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="Charlie.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Mecro.h" />
+    <ClInclude Include="TimeManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

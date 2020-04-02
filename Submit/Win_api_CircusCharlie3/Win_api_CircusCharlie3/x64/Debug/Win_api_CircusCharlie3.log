@@ -1,7 +1,3 @@
 ﻿  Background.cpp
-  Bitmap.cpp
-  Charlie.cpp
-  Game.cpp
-  소스.cpp
-  코드를 생성하고 있습니다...
+c:\users\surin\desktop\programming\jungjaehoon\submit\win_api_circuscharlie3\win_api_circuscharlie3\background.cpp(202): warning C4805: '==': 연산에 'BOOL' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
   Win_api_CircusCharlie3.vcxproj -> C:\Users\surin\Desktop\Programming\JungJaehoon\Submit\Win_api_CircusCharlie3\x64\Debug\Win_api_CircusCharlie3.exe
